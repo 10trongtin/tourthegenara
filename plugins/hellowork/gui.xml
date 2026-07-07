@@ -1,0 +1,35 @@
+<krpano>
+	
+	<funny_hotspot 
+		poi_scale="0.4" 
+		poi_framerate="10" 
+		poi_animation="true" 
+
+		tooltip_bg_linecolor="0xffffff" 
+		tooltip_bg_linewidth="1" 
+		tooltip_bg_linebgshadow="0 0 1 0 0x000000 1.0"
+		tooltip_bg_linepadding="-40"
+
+		tooltip_bg_bgcolor="0xffffff" 
+		tooltip_bg_bgalpha="1" 
+		tooltip_bg_bgborder="1 0x000000 1.0"
+		tooltip_bg_bgroundedge="100" 
+		tooltip_bg_padding="10 6" 
+		tooltip_bg_css="font-size:14px;font-weight:bold;text-align:center;color:#000000;"
+
+		tooltip_popup_width="0"
+		tooltip_popup_height="0"
+		tooltip_popup_bgroundedge="10" 
+		tooltip_popup_margin="3" 
+
+		tooltip_popup_title_bgcolor="0xffffff" 
+		tooltip_popup_title_bgalpha="1" 
+		tooltip_popup_title_padding="10 6" 
+		tooltip_popup_title_margin="5" 
+		tooltip_popup_title_css="font-size:22px;font-weight:bold;text-align:center;color:#000000;"
+
+		screen_margin="350"
+	/>
+	
+
+</krpano>

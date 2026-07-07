@@ -1,0 +1,285 @@
+﻿<krpano version="1.20.11" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="true"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               autotour="false"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext=""
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	
+	<scene name="scene_Clubhouse_-_Htht_bshi" title="Clubhouse - Hồ bơi" onstart="" thumburl="panos/Clubhouse_-_Htht_bshi.tiles/thumb.jpg" lat="10.70247856" lng="106.44864725" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Clubhouse_-_Htht_bshi.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Clubhouse_-_Htht_bshi.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Cpang_vipqn_-_qqpgi_phun_nswthbc" title="Công viên - Đài phun nước" onstart="" thumburl="panos/Cpang_vipqn_-_qqpgi_phun_nswthbc.tiles/thumb.jpg" lat="10.69976625" lng="106.44885128" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cpang_vipqn_-_qqpgi_phun_nswthbc.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cpang_vipqn_-_qqpgi_phun_nswthbc.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Cthvng_vpgo_dthx_phn" title="Cổng vào dự án" onstart="" thumburl="panos/Cthvng_vpgo_dthx_phn.tiles/thumb.jpg" lat="10.70063914" lng="106.44588925" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Cthvng_vpgo_dthx_phn.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Cthvng_vpgo_dthx_phn.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Lipqn_ktglt_vpfng" title="Liên kết vùng" onstart="" thumburl="panos/Lipqn_ktglt_vpfng.tiles/thumb.jpg" lat="10.69658989" lng="106.44650422" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Lipqn_ktglt_vpfng.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Lipqn_ktglt_vpfng.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Nhpg_mtgru" title="Nhà mẫu" onstart="" thumburl="panos/Nhpg_mtgru.tiles/thumb.jpg" lat="10.70067450" lng="106.44778317" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Nhpg_mtgru.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Nhpg_mtgru.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Phpin_khu_1_-_Athena" title="Phân khu 1 - Athena" onstart="" thumburl="panos/Phpin_khu_1_-_Athena.tiles/thumb.jpg" lat="10.70202417" lng="106.44792119" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Phpin_khu_1_-_Athena.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Phpin_khu_1_-_Athena.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Phpin_khu_2_-_Apollo" title="Phân khu 2 - Apollo" onstart="" thumburl="panos/Phpin_khu_2_-_Apollo.tiles/thumb.jpg" lat="10.70211461" lng="106.44958681" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Phpin_khu_2_-_Apollo.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Phpin_khu_2_-_Apollo.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Phpin_khu_3_-_Flora" title="Phân khu 3 - Flora" onstart="" thumburl="panos/Phpin_khu_3_-_Flora.tiles/thumb.jpg" lat="10.70003611" lng="106.44880808" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Phpin_khu_3_-_Flora.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Phpin_khu_3_-_Flora.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Spin_ththd_thao_-_Spin_chshi_trtgh_em" title="Sân thể thao - Sân chơi trẻ em" onstart="" thumburl="panos/Spin_ththd_thao_-_Spin_chshi_trtgh_em.tiles/thumb.jpg" lat="10.70209269" lng="106.44881222" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Spin_ththd_thao_-_Spin_chshi_trtgh_em.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Spin_ththd_thao_-_Spin_chshi_trtgh_em.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Trthlc_chptnh_nhpg_mtgru" title="Trục chính nhà mẫu" onstart="" thumburl="panos/Trthlc_chptnh_nhpg_mtgru.tiles/thumb.jpg" lat="10.70075236" lng="106.44813925" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Trthlc_chptnh_nhpg_mtgru.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Trthlc_chptnh_nhpg_mtgru.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Tthvng_quan_1" title="Tổng quan 1" onstart="" thumburl="panos/Tthvng_quan_1.tiles/thumb.jpg" lat="10.70067622" lng="106.44528758" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Tthvng_quan_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Tthvng_quan_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Tthvng_quan_2" title="Tổng quan 2" onstart="" thumburl="panos/Tthvng_quan_2.tiles/thumb.jpg" lat="10.70089464" lng="106.45105958" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Tthvng_quan_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Tthvng_quan_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Tthvng_quan_3" title="Tổng quan 3" onstart="" thumburl="panos/Tthvng_quan_3.tiles/thumb.jpg" lat="10.70378756" lng="106.44863103" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Tthvng_quan_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Tthvng_quan_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_Tthvng_quan_4" title="Tổng quan 4" onstart="" thumburl="panos/Tthvng_quan_4.tiles/thumb.jpg" lat="10.69876922" lng="106.44888019" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Tthvng_quan_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Tthvng_quan_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_View_trung_tpim_dthx_phn" title="View trung tâm dự án" onstart="" thumburl="panos/View_trung_tpim_dthx_phn.tiles/thumb.jpg" lat="10.70081172" lng="106.44876056" heading="0.0">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/View_trung_tpim_dthx_phn.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/View_trung_tpim_dthx_phn.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+
+</krpano>

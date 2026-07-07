@@ -1,0 +1,72 @@
+
+<krpano>
+
+	<include url="plugins_l/plugin_a/photo.xml"/>
+	<include url="plugins_l/plugin_a/youtube.xml"/>
+	<include url="plugins_l/plugin_a/video.xml"/>
+
+	<addhs_settings  pin_cod="0" 
+ 					 sound_close_click="true" 
+ 					 video_close_click="true" 
+ 					 youtube_close_click="true" 
+					 FIRSTXML="tour" 
+					 path="%FIRSTXML%/" 
+					 action_list="'add_hotspot/plugins_l/actionSM.html'" 
+					 photo="true" 
+					 video="true" 
+					 youtube="true" 
+ 		   		/>
+	
+
+  <hotspot  name="hotspot_1" style="text_hs_sm" type="text" keep="true" distorted="true" enabled="false" visible="false" capture="false" zorder="6"
+ 			ath="-36.0858" atv="46.6826" width="171" height="33" rotate="88.08" edge="center"
+ 			css="font-family:Arial; font-size:20px; color:#15FF00;" vcenter="true" padding="5 5 5 5" wordwrap="true" bg="true" bgcolor="0x0015FF" bgalpha="0"
+ 			bgborder="1 0xFFFFFF 0" bgroundedge="0 0 0 0" bgshadow="0 0 0 0x000000 0.5" txtshadow="3 3 0 0x000000 0.50" mergedalpha="false" oversampling="2" mipmapping="false" interactivecontent="false"
+ 			install_onclick="12" title="hotspot_1" scene_EL="scene_lipqn_ktglt_vpfng" drag_hs="false" fov_EL="120" enabled2="true" visible2="true"
+ 			html="Đường vành đai 4"
+			ondown="drag_LinkSM();"
+ 		/>
+	
+  <hotspot  name="hotspot_2" style="text_hs_sm" type="text" keep="true" distorted="true" enabled="false" visible="false" capture="false" zorder="6"
+ 			ath="5.6602" atv="61.2514" width="171" height="33" rotate="-12.24" edge="center"
+ 			css="font-family:Arial; font-size:20px; color:#15FF00;" vcenter="true" padding="5 5 5 5" wordwrap="true" bg="true" bgcolor="0xFFFFFF" bgalpha="0"
+ 			bgborder="1 0xFFFFFF 0" bgroundedge="0 0 0 0" bgshadow="0 0 0 0x000000 0.5" txtshadow="2 2 0 0x000000 0.50" mergedalpha="false" oversampling="2" mipmapping="false" interactivecontent="false"
+ 			install_onclick="12" title="hotspot_2" scene_EL="scene_tthvng_quan_1" drag_hs="false" fov_EL="120" enabled2="true" visible2="true"
+ 			html="Đường vành đai 4"
+			ondown="drag_LinkSM();"
+ 		/>
+	
+ <style name="pl_hs_add_hs"
+ 		keep="true"
+		enabled2="true"
+ 		visible2="true"
+ 		visible="false"
+ 		alpha="1"
+ 		alpha2="1"
+ 		capture="false"
+ 		handcursor="true"
+ 		zorder="0"
+ 		install_onclick="14"
+ 		fov_EL="90"
+ 		fillcolor="0xB5E432"
+ 		fillcolor2="0xB5E432"
+ 		fillalpha="0.30"
+ 		fillalpha2="0.30"
+ 		borderwidth="2"
+ 		borderwidth2="2"
+ 		bordercolor="0x7CF93E"
+ 		bordercolor2="0x55FF00"
+ 		borderalpha="0.00"
+ 		borderalpha2="0.00"
+ 		onover="set_pol_2(get(name));"
+ 		onout="set_pol_1(get(name));"
+ 		ondown="ondown_pl_hs();"
+ 		blendmode="normal"
+ 		group="null"
+	 />
+
+	 <!-- polygonal hotspot -->
+
+
+ 
+</krpano>
