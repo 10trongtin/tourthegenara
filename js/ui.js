@@ -134,11 +134,11 @@ class SoliaUIOrchestrator {
   initInfoModal() {
     const modalHTML = `
       <div id="solia-info-modal" class="solia-interactive">
-        <div class="solia-info-card solia-glass">
-          <img src="" class="solia-info-img animate-shimmer" alt="Scene image">
+        <div class="solia-info-card">
+          <img src="" class="solia-info-img" alt="Scene image">
           <div class="solia-info-body">
-            <h2 class="solia-info-title solia-title">Tiêu đề địa điểm</h2>
-            <p class="solia-info-text solia-subtitle">Mô tả chi tiết về địa điểm này sẽ hiện ở đây.</p>
+            <h2 class="solia-info-title">Tiêu đề địa điểm</h2>
+            <p class="solia-info-text">Mô tả chi tiết về địa điểm này sẽ hiện ở đây.</p>
             <div class="solia-info-actions">
               <button class="solia-btn-secondary solia-interactive" onclick="SoliaUI.closeInfoModal()">Đóng</button>
               <button class="solia-btn-primary solia-interactive" id="solia-info-cta">Đến khu vực này</button>

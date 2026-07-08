@@ -1,10 +1,12 @@
 /**
  * ui.css
- * Solia Virtual Tour — Material Design 3 Structure
- * Overall Layout & Grid Settings
+ * Solia Virtual Tour — Orange Luxury Layout
+ * Compact, zero-whitespace, grid-based structure
  */
 
-/* Container wrapper overlay */
+/* =====================================================
+   GLOBAL RESET & BASE
+   ===================================================== */
 #solia-ui {
   position: absolute;
   top: 0;
@@ -16,10 +18,10 @@
   color: var(--md-sys-color-on-surface);
   pointer-events: none;
   display: grid;
-  grid-template-columns: 380px 1fr;
-  grid-template-rows: auto 1fr;
-  padding: var(--sp-6);
-  gap: var(--sp-6);
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: 1fr;
+  padding: var(--sp-4);
+  gap: var(--sp-4);
   box-sizing: border-box;
   transition: grid-template-columns var(--t-spring);
 }
@@ -27,6 +29,7 @@
 #solia-ui.menu-collapsed {
   grid-template-columns: 0px 1fr;
   gap: 0;
+  padding-left: var(--sp-4);
 }
 
 #solia-ui * {
@@ -39,7 +42,9 @@
   pointer-events: auto;
 }
 
-/* State Layer for M3 interactions (hover: 8%, pressed: 12%) */
+/* =====================================================
+   M3 STATE LAYER (Hover/Press micro-interaction)
+   ===================================================== */
 .solia-m3-state {
   position: relative;
   overflow: hidden;
@@ -48,60 +53,65 @@
 .solia-m3-state::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: currentColor;
   opacity: 0;
   transition: opacity var(--t-duration) var(--t-easing);
   pointer-events: none;
+  border-radius: inherit;
 }
 
-.solia-m3-state:hover::after {
-  opacity: 0.08;
-}
-
-.solia-m3-state:active::after {
-  opacity: 0.12;
-}
+.solia-m3-state:hover::after  { opacity: 0.07; }
+.solia-m3-state:active::after { opacity: 0.14; }
 
 /* =====================================================
-   DESKTOP GRID STRUCTURE
+   LEFT PANEL
    ===================================================== */
 #solia-left-panel {
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   width: 100%;
-  max-width: 360px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--md-sys-color-surface);
-  border-radius: var(--md-shape-corner-large);
-  border: 1px solid var(--md-sys-color-outline);
-  padding: var(--sp-5);
-  gap: var(--sp-4);
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--md-shape-corner-xl);
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
   pointer-events: auto;
-  transition: transform var(--t-spring), opacity var(--t-duration), padding var(--t-spring);
+  transition: transform var(--t-spring), opacity var(--t-duration);
+  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* Left panel TOP accent strip */
+#solia-left-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--md-sys-color-primary), transparent);
+  opacity: 0.6;
 }
 
 #solia-ui.menu-collapsed #solia-left-panel {
-  transform: translateX(-120%);
+  transform: translateX(-110%);
   opacity: 0;
-  padding: 0;
   pointer-events: none;
 }
 
-/* Floating button to reopen the menu */
+/* Reopen button (FAB to restore the panel) */
 #solia-menu-reopen-btn {
   position: absolute;
-  top: var(--sp-6);
-  left: var(--sp-6);
+  top: var(--sp-4);
+  left: var(--sp-4);
   z-index: var(--z-toolbar);
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.5);
+  transform: scale(0.7);
   transition: opacity var(--t-spring), transform var(--t-spring);
 }
 
@@ -111,15 +121,12 @@
   transform: scale(1);
 }
 
-/* Main virtual tour canvas styling offset if needed */
-#pano {
-  z-index: var(--z-pano);
-}
-
-/* Responsive adjustment for desktop right-side overlay */
+/* =====================================================
+   RIGHT OVERLAY
+   ===================================================== */
 #solia-right-overlay {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   position: relative;
   height: 100%;
   display: flex;
@@ -127,56 +134,74 @@
   justify-content: flex-end;
   align-items: flex-end;
   pointer-events: none;
-  overflow: hidden; /* Clip floorplan drawer slide-in */
+  overflow: hidden;
 }
 
-/* FAB Action button wrapper */
-#solia-fab-container {
-  position: absolute;
-  bottom: var(--sp-2);
-  right: var(--sp-2);
-  pointer-events: auto;
-}
-
-/* Scroll styles */
+/* =====================================================
+   SCROLL UTILITIES
+   ===================================================== */
 .solia-scroll-x {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   gap: var(--sp-2);
-  padding-bottom: 2px;
 }
 
-.solia-scroll-x::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
-}
+.solia-scroll-x::-webkit-scrollbar { display: none; }
 
 .solia-scroll-y {
   flex: 1;
   overflow-y: auto;
   scrollbar-width: thin;
+  scrollbar-color: rgba(232,98,10,0.3) transparent;
 }
 
-/* Divider line */
+.solia-scroll-y::-webkit-scrollbar {
+  width: 3px;
+}
+
+.solia-scroll-y::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.solia-scroll-y::-webkit-scrollbar-thumb {
+  background: rgba(232, 98, 10, 0.35);
+  border-radius: 2px;
+}
+
+/* Divider */
 .solia-m3-divider {
   height: 1px;
-  background-color: var(--md-sys-color-outline-variant);
-  width: 100%;
+  background: var(--md-sys-color-outline-variant);
+  flex-shrink: 0;
 }
 
-/* Responsive: screen smaller than 768px (Mobile) */
+/* =====================================================
+   PANO
+   ===================================================== */
+#pano {
+  z-index: var(--z-pano);
+}
+
+/* =====================================================
+   RESPONSIVE — MOBILE (≤768px)
+   ===================================================== */
 @media (max-width: 768px) {
   #solia-ui {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    padding: var(--sp-4);
-    gap: var(--sp-4);
+    grid-template-rows: 1fr;
+    padding: 0;
+    gap: 0;
   }
 
-  /* Hide left panel layout side-by-side on mobile */
   #solia-left-panel {
     display: none !important;
+  }
+
+  #solia-right-overlay {
+    width: 100%;
+    height: 100%;
   }
 }
