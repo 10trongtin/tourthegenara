@@ -1,0 +1,144 @@
+/* =====================================================
+   CINEMATIC LOADER
+   ===================================================== */
+#solia-cinematic-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--surface-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#solia-cinematic-loader.fade-out {
+  opacity: 0;
+  transform: scale(1.05); /* Slight expansion on exit */
+  pointer-events: none;
+}
+
+/* Background Slideshow */
+.solia-loader-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.35; /* Darken for text readability */
+}
+
+.solia-loader-bg-slide {
+  position: absolute;
+  inset: -5%; /* Slightly larger for ken burns */
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  transform: scale(1);
+}
+
+.solia-loader-bg-slide.active {
+  opacity: 1;
+  animation: kenBurns 12s linear forwards;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* Loader Content */
+.solia-loader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* Logo */
+.solia-loader-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 24px;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: logoIntro 2s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes logoIntro {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Brand Title */
+.solia-loader-brand {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 1.5s cubic-bezier(0.2, 0, 0, 1) 0.5s forwards;
+}
+
+/* Poetic Text */
+.solia-loader-poetic-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  height: 20px; /* Fixed height to prevent layout shift */
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeUp 1.5s cubic-bezier(0.2, 0, 0, 1) 0.8s forwards;
+  transition: opacity 0.8s ease;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(15px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Minimal Progress Bar */
+.solia-loader-progress-container {
+  width: 200px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 1.5s cubic-bezier(0.2, 0, 0, 1) 1.2s forwards;
+}
+
+.solia-loader-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+/* Glow effect for the progress head */
+.solia-loader-progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 20px;
+  height: 5px;
+  background: var(--accent);
+  filter: blur(4px);
+  opacity: 0.8;
+}

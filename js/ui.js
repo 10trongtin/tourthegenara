@@ -44,55 +44,127 @@ class SoliaUIOrchestrator {
   initLoadingScreen() {
     if (!document.body) return; // Defensive check
     
+    // We want a minimum 10 seconds for the cinematic intro
+    this.minLoaderTime = 10000;
+    this.loaderStartTime = Date.now();
+    this.loaderComplete = false;
+
+    // Cinematic texts that rotate
+    this.poeticPhrases = [
+      "Khởi tạo không gian sống thượng lưu...",
+      "Tái hiện kiệt tác kiến trúc...",
+      "Hoàn thiện trải nghiệm đẳng cấp...",
+      "Chuẩn bị bước vào đặc quyền sống tinh hoa..."
+    ];
+    this.currentPhraseIndex = 0;
+
+    // Generic background images (thumbnails of scenes)
+    this.bgImages = [
+      "panos/livingroom.tiles/thumb.jpg",
+      "panos/masterbedroom.tiles/thumb.jpg",
+      "panos/pool.tiles/thumb.jpg"
+    ];
+    this.currentBgIndex = 0;
+    
     const loadingHTML = `
-      <div id="solia-loading-screen">
-        <div class="solia-loader-logo-container">
-          <img src="${SoliaConfig.logoUrl}" class="solia-loader-logo animate-pulse-glow" alt="Solia Logo" onerror="this.style.display='none'">
-          <h1 class="solia-loader-title">${SoliaConfig.tourTitle}</h1>
-          <p class="solia-loader-subtitle">Luxury Property Tour</p>
+      <div id="solia-cinematic-loader">
+        <div class="solia-loader-bg-container" id="solia-loader-bg-container">
+          <!-- BGs will be injected here -->
         </div>
-        <div class="solia-loader-progress-box">
-          <svg class="solia-loader-progress-circle animate-spin-slow" width="120" height="120">
-            <circle class="solia-loader-progress-bg" cx="60" cy="60" r="50"></circle>
-            <circle class="solia-loader-progress-bar" cx="60" cy="60" r="50" stroke-dasharray="314.16" stroke-dashoffset="314.16"></circle>
-          </svg>
-          <div class="solia-loader-progress-text" id="solia-progress-text">0%</div>
+        
+        <div class="solia-loader-content">
+          <img src="${SoliaConfig.logoUrl}" class="solia-loader-logo" alt="Genera Logo" onerror="this.style.display='none'">
+          <h1 class="solia-loader-brand">${SoliaConfig.tourTitle}</h1>
+          <div class="solia-loader-poetic-text" id="solia-loader-text">Đang kết nối không gian...</div>
+          
+          <div class="solia-loader-progress-container">
+            <div class="solia-loader-progress-bar" id="solia-progress-bar"></div>
+          </div>
         </div>
-        <div class="solia-loader-desc">Đang tải không gian 360° cao cấp...</div>
       </div>
     `;
     document.body.insertAdjacentHTML('beforeend', loadingHTML);
 
-    // Simulate progress load before Krpano XML is fully complete to offer instant microfeedback
+    this.initCinematicEffects();
+
+    // Progress bar simulation (reaches 100% in exactly 10s)
     let progress = 0;
+    const progressInterval = 100; // run every 100ms
+    const step = 100 / (this.minLoaderTime / progressInterval); 
+    
     this.progressInterval = setInterval(() => {
-      if (progress < 85) {
-        progress += Math.floor(Math.random() * 5) + 1;
+      if (progress < 99) {
+        progress += step;
         this.updateProgress(progress);
       }
-    }, 120);
+    }, progressInterval);
+  }
+
+  initCinematicEffects() {
+    // Inject BGs
+    const bgContainer = document.getElementById("solia-loader-bg-container");
+    if (!bgContainer) return;
+    
+    let bgHTML = '';
+    this.bgImages.forEach((img, index) => {
+      // Use standard skin fallback if thumb not found
+      bgHTML += `<div class="solia-loader-bg-slide ${index === 0 ? 'active' : ''}" style="background-image: url('${img}');" id="loader-bg-${index}"></div>`;
+    });
+    bgContainer.innerHTML = bgHTML;
+
+    // Slide rotation
+    this.bgInterval = setInterval(() => {
+      const currentBg = document.getElementById(`loader-bg-${this.currentBgIndex}`);
+      if (currentBg) currentBg.classList.remove("active");
+      
+      this.currentBgIndex = (this.currentBgIndex + 1) % this.bgImages.length;
+      
+      const nextBg = document.getElementById(`loader-bg-${this.currentBgIndex}`);
+      if (nextBg) nextBg.classList.add("active");
+    }, 4000);
+
+    // Text rotation
+    const textEl = document.getElementById("solia-loader-text");
+    this.textInterval = setInterval(() => {
+      if (!textEl) return;
+      textEl.style.opacity = 0;
+      setTimeout(() => {
+        this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.poeticPhrases.length;
+        textEl.textContent = this.poeticPhrases[this.currentPhraseIndex];
+        textEl.style.opacity = 1;
+      }, 800); // Wait for fade out
+    }, 3500);
   }
 
   updateProgress(percent) {
-    const textEl = document.getElementById("solia-progress-text");
-    const barEl = document.querySelector(".solia-loader-progress-bar");
-    if (textEl) textEl.textContent = `${percent}%`;
+    const barEl = document.getElementById("solia-progress-bar");
     if (barEl) {
-      const offset = 314.16 - (314.16 * percent) / 100;
-      barEl.style.strokeDashoffset = offset;
+      barEl.style.width = `${Math.min(percent, 100)}%`;
     }
   }
 
   hideLoading() {
-    clearInterval(this.progressInterval);
-    this.updateProgress(100);
+    this.loaderComplete = true; // Krpano is ready
+    
+    const timeElapsed = Date.now() - this.loaderStartTime;
+    const remainingTime = Math.max(0, this.minLoaderTime - timeElapsed);
+
+    // Wait until minimum time has elapsed
     setTimeout(() => {
-      const loader = document.getElementById("solia-loading-screen");
-      if (loader) {
-        loader.classList.add("fade-out");
-        setTimeout(() => loader.remove(), 800);
-      }
-    }, 400);
+      clearInterval(this.progressInterval);
+      clearInterval(this.bgInterval);
+      clearInterval(this.textInterval);
+      
+      this.updateProgress(100);
+      
+      setTimeout(() => {
+        const loader = document.getElementById("solia-cinematic-loader");
+        if (loader) {
+          loader.classList.add("fade-out");
+          setTimeout(() => loader.remove(), 1200); // Match CSS transition time
+        }
+      }, 500);
+    }, remainingTime);
   }
 
   initializeUI() {
