@@ -1,112 +1,145 @@
 /**
- * theme.css
- * Solia Virtual Tour — Material Design 3 — Orange Luxury Edition
- * Seed Color: #FF6B00 (Deep Orange — Luxury Primary)
+ * theme.css — GENERA Virtual Tour
+ * Luxury Minimal UI · Creative Director Edition
+ *
+ * DESIGN PHILOSOPHY:
+ * · Màu cam (#E8620A) CHỈ xuất hiện ở: FAB chính + trạng thái active đang chọn
+ * · Toàn bộ còn lại: palette trung tính (đen / xám / trắng ngà)
+ * · Mọi thao tác UI có hiệu ứng chuyển 200–300ms
  */
 
 /* =====================================================
-   GOOGLE FONTS IMPORT
+   GOOGLE FONTS
    ===================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 
 /* =====================================================
-   M3 DYNAMIC COLOR SYSTEM — ORANGE LUXURY
+   DESIGN TOKENS
    ===================================================== */
 :root {
-  /* --- Primary: Deep Orange #E8620A --- */
-  --md-sys-color-primary:                  #E8620A;
-  --md-sys-color-on-primary:               #ffffff;
-  --md-sys-color-primary-container:        #3D1800;
-  --md-sys-color-on-primary-container:     #FFD8BB;
-  --md-sys-color-primary-light:            rgba(232, 98, 10, 0.15);
-  --md-sys-color-primary-glow:             rgba(232, 98, 10, 0.35);
 
-  /* --- Secondary: Warm Amber --- */
-  --md-sys-color-secondary:                #FFB86C;
-  --md-sys-color-on-secondary:             #1c0800;
+  /* ─── ACCENT (cam — dùng có chủ đích, không lạm dụng) ─── */
+  --accent:              #E8620A;
+  --accent-hover:        #FF7520;
+  --accent-dim:          rgba(232, 98, 10, 0.12);  /* active bg nhẹ */
+  --accent-border:       rgba(232, 98, 10, 0.35);  /* active border */
+  --accent-glow:         rgba(232, 98, 10, 0.28);  /* shadow cam */
 
-  /* --- Dark Surfaces --- */
-  --md-sys-color-surface:                  #0D0D0D;
-  --md-sys-color-on-surface:               #F5F0EA;
-  --md-sys-color-on-surface-variant:       #8A8480;
+  /* ─── NEUTRAL SURFACE (không được cam hoá) ─── */
+  --surface-bg:          #0E0E0E;       /* nền gốc viewer */
+  --surface-panel:       rgba(14, 14, 14, 0.86);   /* glass panel */
+  --surface-1:           rgba(255,255,255,0.035);   /* container lv1 */
+  --surface-2:           rgba(255,255,255,0.065);   /* container lv2 */
+  --surface-3:           rgba(255,255,255,0.10);    /* container lv3 */
 
-  --md-sys-color-surface-container:        rgba(255, 255, 255, 0.04);
-  --md-sys-color-surface-container-high:   rgba(255, 255, 255, 0.08);
-  --md-sys-color-surface-container-highest:rgba(255, 255, 255, 0.12);
-  
-  /* --- Panel glass backgrounds --- */
-  --panel-bg:                              rgba(13, 13, 13, 0.88);
-  --panel-border:                          rgba(232, 98, 10, 0.18);
-  --panel-border-hover:                    rgba(232, 98, 10, 0.45);
+  /* ─── NEUTRAL BORDER ─── */
+  --border-subtle:       rgba(255,255,255,0.07);    /* đường kẻ mờ */
+  --border-default:      rgba(255,255,255,0.11);    /* border mặc định */
+  --border-strong:       rgba(255,255,255,0.22);    /* border hover/focus */
 
-  /* --- Borders & Outlines --- */
-  --md-sys-color-outline:                  rgba(232, 98, 10, 0.18);
-  --md-sys-color-outline-variant:          rgba(255, 255, 255, 0.06);
+  /* ─── TEXT ─── */
+  --text-primary:        #F2EDE6;   /* chữ chính — trắng ngà ấm */
+  --text-secondary:      #808080;   /* chữ phụ — xám trung tính */
+  --text-tertiary:       #505050;   /* chữ mờ — placeholder */
+  --text-accent:         #E8620A;   /* CHỈ dùng khi muốn highlight bằng cam */
 
-  /* --- Spacing System --- */
-  --sp-1:   4px;
-  --sp-2:   8px;
-  --sp-3:   12px;
-  --sp-4:   16px;
-  --sp-5:   20px;
-  --sp-6:   24px;
-  --sp-8:   32px;
+  /* ─── TYPOGRAPHY ─── */
+  --font-sans:   'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif:  'Cormorant Garamond', 'Times New Roman', Georgia, serif;
 
-  /* --- Typography Font Sizes --- */
-  --fs-2xs: 10px;
-  --fs-xs:  11px;
-  --fs-sm:  12px;
-  --fs-base:14px;
-  --fs-md:  16px;
-  --fs-lg:  18px;
-  --fs-xl:  22px;
-  --fs-2xl: 28px;
-  --fs-3xl: 36px;
+  /* ─── FONT SIZES ─── */
+  --fs-2xs:  10px;
+  --fs-xs:   11px;
+  --fs-sm:   12px;
+  --fs-base: 13px;
+  --fs-md:   15px;
+  --fs-lg:   17px;
+  --fs-xl:   21px;
+  --fs-2xl:  27px;
+  --fs-3xl:  38px;
 
-  /* --- Typography Font Weights --- */
-  --fw-light:    300;
-  --fw-regular:  400;
-  --fw-medium:   500;
-  --fw-semibold: 600;
-  --fw-bold:     700;
+  /* ─── FONT WEIGHTS ─── */
+  --fw-light:   300;
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
 
-  /* --- Line Heights --- */
-  --lh-none:    1;
+  /* ─── LINE HEIGHTS ─── */
   --lh-tight:   1.2;
-  --lh-normal:  1.5;
-  --lh-relaxed: 1.7;
+  --lh-snug:    1.35;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.75;
 
-  /* --- M3 Shape System --- */
-  --md-shape-corner-xs:     4px;
-  --md-shape-corner-small:  8px;
-  --md-shape-corner-medium: 14px;
-  --md-shape-corner-large:  20px;
-  --md-shape-corner-xl:     28px;
-  --md-shape-corner-full:   999px;
+  /* ─── BORDER RADIUS ─── */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   18px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-full: 9999px;
 
-  /* --- Typography --- */
-  --font-family:      'Be Vietnam Pro', -apple-system, sans-serif;
-  --font-family-serif:'Cormorant Garamond', Georgia, serif;
+  /* ─── SPACING ─── */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
 
-  /* --- Transitions --- */
-  --t-fast:    150ms;
-  --t-duration:200ms;
-  --t-normal:  280ms;
-  --t-spring:  480ms cubic-bezier(0.175, 0.885, 0.32, 1.1);
-  --t-easing:  cubic-bezier(0.2, 0, 0, 1);
+  /* ─── TRANSITIONS (200–300ms, easing chuẩn M3) ─── */
+  --ease:        cubic-bezier(0.2, 0, 0, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* --- Elevation / Shadows --- */
-  --shadow-sm:  0 2px 8px rgba(0,0,0,0.45);
-  --shadow-md:  0 4px 20px rgba(0,0,0,0.5);
-  --shadow-lg:  0 8px 32px rgba(0,0,0,0.6);
-  --shadow-orange: 0 0 20px rgba(232, 98, 10, 0.3);
-  --shadow-orange-sm: 0 0 10px rgba(232, 98, 10, 0.2);
+  --t-fast:   150ms;
+  --t-base:   220ms;            /* standard cho hover, focus */
+  --t-slow:   300ms;            /* mở/đóng panel */
+  --t-spring: 420ms;            /* slide panel */
 
-  /* --- Z-Layers --- */
+  /* shorthand */
+  --transition:        all var(--t-base) var(--ease);
+  --transition-slow:   all var(--t-slow) var(--ease);
+  --transition-spring: all var(--t-spring) var(--ease-spring);
+
+  /* ─── SHADOWS ─── */
+  --shadow-xs: 0 1px 4px rgba(0,0,0,0.35);
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.45);
+  --shadow-md: 0 4px 22px rgba(0,0,0,0.52);
+  --shadow-lg: 0 8px 36px rgba(0,0,0,0.62);
+  --shadow-accent: 0 4px 24px var(--accent-glow);
+
+  /* ─── Z-INDEX ─── */
   --z-pano:    0;
-  --z-overlay: 100;
+  --z-ui:      100;
   --z-drawer:  200;
   --z-toolbar: 300;
   --z-modal:   9999;
-  --z-tooltip: 600;
+  --z-tip:     600;
+
+  /* ─── Backwards compatibility aliases (giữ cho code cũ không vỡ) ─── */
+  --md-sys-color-primary:                  var(--accent);
+  --md-sys-color-on-primary:               #ffffff;
+  --md-sys-color-surface:                  var(--surface-bg);
+  --md-sys-color-on-surface:               var(--text-primary);
+  --md-sys-color-on-surface-variant:       var(--text-secondary);
+  --md-sys-color-surface-container:        var(--surface-1);
+  --md-sys-color-surface-container-high:   var(--surface-2);
+  --md-sys-color-surface-container-highest:var(--surface-3);
+  --md-sys-color-outline:                  var(--border-default);
+  --md-sys-color-outline-variant:          var(--border-subtle);
+  --panel-bg:                              var(--surface-panel);
+  --panel-border:                          var(--border-subtle);
+  --font-family:                           var(--font-sans);
+  --font-family-serif:                     var(--font-serif);
+  --md-shape-corner-full:                  var(--r-full);
+  --md-shape-corner-xl:                    var(--r-xl);
+  --md-shape-corner-large:                 var(--r-lg);
+  --md-shape-corner-medium:                var(--r-md);
+  --md-shape-corner-small:                 var(--r-sm);
+  --md-shape-corner-xs:                    var(--r-xs);
+  --shadow-orange:                         var(--shadow-accent);
+  --shadow-orange-sm:                      0 0 12px var(--accent-glow);
 }

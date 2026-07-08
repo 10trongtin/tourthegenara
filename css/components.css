@@ -1,26 +1,29 @@
 /**
- * components.css
- * Solia Virtual Tour — Orange Luxury M3 Components
- * Minimal whitespace, dense layout, premium dark glass aesthetic
+ * components.css — GENERA Virtual Tour
+ * Luxury Minimal UI Components
+ * CD NOTES: 
+ * · Breathing room: increased padding/gaps
+ * · Typographic hierarchy: larger titles, cleaner subtext
+ * · Search bar: rounded, glow on focus
+ * · Toolbar: Grouped buttons, distinct spacing
  */
 
 /* =====================================================
    PANEL HEADER SECTION
-   (Brand logo + title area at very top of left panel)
    ===================================================== */
 .solia-panel-header {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
-  padding: var(--sp-4) var(--sp-4) var(--sp-3);
+  gap: var(--sp-4);
+  padding: var(--sp-6) var(--sp-5) var(--sp-4);
   flex-shrink: 0;
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .solia-panel-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--md-shape-corner-small);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -29,91 +32,92 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
   overflow: hidden;
 }
 
 .solia-panel-brand-name {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-light);
-  color: var(--md-sys-color-primary);
-  letter-spacing: 3px;
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  letter-spacing: 4px;
   text-transform: uppercase;
-  line-height: var(--lh-none);
+  line-height: var(--lh-tight);
 }
 
 .solia-panel-brand-sub {
-  font-size: var(--fs-2xs);
-  color: var(--md-sys-color-on-surface-variant);
-  letter-spacing: 2px;
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+  letter-spacing: 2.5px;
   text-transform: uppercase;
 }
 
 .solia-panel-collapse-btn {
   background: transparent;
   border: none;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--text-secondary);
   cursor: pointer;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--md-shape-corner-full);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--t-duration), background-color var(--t-duration);
+  transition: var(--transition);
   flex-shrink: 0;
 }
 
 .solia-panel-collapse-btn:hover {
-  background: var(--md-sys-color-surface-container-high);
-  color: var(--md-sys-color-on-surface);
+  background: var(--surface-2);
+  color: var(--text-primary);
 }
 
 /* =====================================================
-   M3 SEARCH BAR — Compact
+   SEARCH BAR
    ===================================================== */
 .solia-search-wrap {
-  padding: var(--sp-3) var(--sp-4);
+  padding: var(--sp-5) var(--sp-5);
   flex-shrink: 0;
 }
 
 .solia-m3-search-bar {
   display: flex;
   align-items: center;
-  background: var(--md-sys-color-surface-container);
-  border-radius: var(--md-shape-corner-full);
-  height: 40px;
-  padding: 0 var(--sp-3);
-  gap: var(--sp-2);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  transition: border-color var(--t-duration) var(--t-easing),
-              background-color var(--t-duration) var(--t-easing);
+  background: var(--surface-1);
+  border-radius: var(--r-full);
+  height: 48px;
+  padding: 0 var(--sp-4);
+  gap: var(--sp-3);
+  border: 1px solid var(--border-default);
+  transition: var(--transition);
 }
 
 .solia-m3-search-bar:focus-within {
-  border-color: var(--md-sys-color-primary);
-  background: var(--md-sys-color-surface-container-high);
-  box-shadow: 0 0 0 1px rgba(232, 98, 10, 0.15);
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+  box-shadow: 0 0 0 1px var(--border-strong);
 }
 
 .solia-m3-menu-btn {
   background: transparent;
   border: none;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--text-secondary);
   cursor: pointer;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--md-shape-corner-full);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color var(--t-duration);
+  transition: var(--transition);
   flex-shrink: 0;
+  margin-left: -4px;
 }
 
 .solia-m3-menu-btn:hover {
-  color: var(--md-sys-color-primary);
+  color: var(--text-primary);
+  background: var(--surface-1);
 }
 
 .solia-m3-search-input {
@@ -121,40 +125,40 @@
   background: transparent;
   border: none;
   outline: none;
-  font-family: var(--font-family);
-  font-size: var(--fs-sm);
-  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--text-primary);
+  font-weight: var(--fw-light);
 }
 
 .solia-m3-search-input::placeholder {
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--text-tertiary);
 }
 
 /* =====================================================
-   CURRENT LOCATION STATUS — Compact
+   LOCATION STATUS
    ===================================================== */
 .solia-location-status {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: var(--sp-2) var(--sp-4);
+  gap: 4px;
+  padding: var(--sp-3) var(--sp-5);
   flex-shrink: 0;
 }
 
 .solia-location-label {
-  font-size: var(--fs-2xs);
-  font-weight: var(--fw-bold);
-  color: var(--md-sys-color-primary);
-  letter-spacing: 2.5px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  letter-spacing: 3px;
   text-transform: uppercase;
-  opacity: 0.85;
 }
 
 .solia-location-title {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-lg);
+  font-family: var(--font-serif);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-light);
-  color: var(--md-sys-color-on-surface);
+  color: var(--text-primary);
   line-height: var(--lh-tight);
   white-space: nowrap;
   overflow: hidden;
@@ -162,1020 +166,481 @@
 }
 
 /* =====================================================
-   M3 ASSIST/FILTER CHIPS — Compact pill row
+   CHIPS
    ===================================================== */
 .solia-chips-wrap {
-  padding: 0 var(--sp-4) var(--sp-3);
+  padding: var(--sp-2) var(--sp-5) var(--sp-4);
   flex-shrink: 0;
 }
 
-.solia-chips-scroll {
-  display: flex;
-  gap: var(--sp-2);
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: 2px;
-}
-
-.solia-chips-scroll::-webkit-scrollbar { display: none; }
-
 .solia-m3-chip {
   background: transparent;
-  color: var(--md-sys-color-on-surface-variant);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-shape-corner-full);
-  padding: 5px 14px;
-  font-family: var(--font-family);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-full);
+  padding: 8px 18px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-regular);
   cursor: pointer;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  letter-spacing: 0.3px;
-  transition: background-color var(--t-duration) var(--t-easing),
-              color var(--t-duration) var(--t-easing),
-              border-color var(--t-duration) var(--t-easing);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
 }
 
 .solia-m3-chip:hover {
-  border-color: rgba(232, 98, 10, 0.4);
-  color: var(--md-sys-color-on-surface);
+  background: var(--surface-1);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
 }
 
 .solia-m3-chip.active {
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  border-color: var(--md-sys-color-primary);
-  box-shadow: var(--shadow-orange-sm);
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: var(--accent-border);
 }
 
 /* =====================================================
-   M3 LIST & LIST ITEMS — Dense, no extra gaps
+   LIST ITEMS
    ===================================================== */
 .solia-list-wrap {
   flex: 1;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(232,98,10,0.3) transparent;
-}
-
-.solia-list-wrap::-webkit-scrollbar { width: 3px; }
-.solia-list-wrap::-webkit-scrollbar-track { background: transparent; }
-.solia-list-wrap::-webkit-scrollbar-thumb {
-  background: rgba(232, 98, 10, 0.3);
-  border-radius: 2px;
+  padding: var(--sp-2) var(--sp-4) var(--sp-4);
 }
 
 .solia-m3-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: var(--sp-2) var(--sp-3) var(--sp-3);
+  gap: var(--sp-2);
 }
 
 .solia-m3-list-item {
   display: flex;
   align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-3);
+  border-radius: var(--r-md);
   background: transparent;
-  border-radius: var(--md-shape-corner-medium);
-  border: 1px solid transparent;
-  padding: var(--sp-2) var(--sp-3);
-  gap: var(--sp-3);
+  border: none;
   cursor: pointer;
   text-align: left;
-  width: 100%;
-  transition: background-color var(--t-duration) var(--t-easing),
-              border-color var(--t-duration) var(--t-easing);
+  transition: var(--transition);
+  color: var(--text-primary);
+  text-decoration: none;
 }
 
 .solia-m3-list-item:hover {
-  background: var(--md-sys-color-surface-container);
-  border-color: var(--md-sys-color-outline-variant);
+  background: var(--surface-1);
 }
 
 .solia-m3-list-item.active {
-  background: var(--md-sys-color-primary-light);
-  border-color: rgba(232, 98, 10, 0.4);
-}
-
-.solia-m3-list-item.active .solia-m3-item-title {
-  color: var(--md-sys-color-primary);
+  background: var(--surface-2);
 }
 
 .solia-m3-item-icon-container {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--md-shape-corner-small);
-  background: var(--md-sys-color-surface-container-high);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-sm);
   overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+  position: relative;
 }
 
 .solia-m3-item-icon-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--t-slow) var(--ease);
 }
 
-.solia-m3-item-icon {
-  color: var(--md-sys-color-primary);
+.solia-m3-list-item:hover .solia-m3-item-icon-container img {
+  transform: scale(1.08);
 }
 
 .solia-m3-item-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 4px;
   overflow: hidden;
-  min-width: 0;
 }
 
 .solia-m3-item-title {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-tight);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: color var(--t-duration);
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.solia-m3-list-item.active .solia-m3-item-title {
+  color: var(--accent);
 }
 
 .solia-m3-item-desc {
+  font-family: var(--font-sans);
   font-size: var(--fs-xs);
-  color: var(--md-sys-color-on-surface-variant);
-  white-space: nowrap;
+  color: var(--text-secondary);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-snug);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: var(--lh-normal);
 }
 
 .solia-m3-item-chevron {
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--text-tertiary);
   flex-shrink: 0;
-  opacity: 0.4;
-  transition: opacity var(--t-duration), color var(--t-duration);
+  transition: var(--transition);
 }
 
 .solia-m3-list-item:hover .solia-m3-item-chevron {
-  opacity: 1;
-  color: var(--md-sys-color-primary);
+  color: var(--text-primary);
+  transform: translateX(4px);
 }
 
 /* =====================================================
-   FAB — Extended Orange Luxury
-   ===================================================== */
-.solia-m3-fab {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-2);
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  border: none;
-  padding: 0 var(--sp-5);
-  height: 48px;
-  border-radius: var(--md-shape-corner-full);
-  font-family: var(--font-family);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(232, 98, 10, 0.4);
-  letter-spacing: 0.3px;
-  transition: transform var(--t-duration) var(--t-easing),
-              box-shadow var(--t-duration) var(--t-easing),
-              background-color var(--t-duration) var(--t-easing);
-}
-
-.solia-m3-fab:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(232, 98, 10, 0.55);
-  background: #FF7519;
-}
-
-.solia-m3-fab:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 10px rgba(232, 98, 10, 0.3);
-}
-
-/* Small icon-only FAB */
-.solia-m3-fab-sm {
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* =====================================================
-   REOPEN MENU BUTTON STYLE
-   ===================================================== */
-#solia-menu-reopen-btn {
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md), 0 0 12px rgba(232, 98, 10, 0.25);
-}
-
-/* =====================================================
-   MODAL NAVIGATION DRAWER
-   ===================================================== */
-#solia-modal-drawer {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-drawer);
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity var(--t-normal) var(--t-easing),
-              visibility var(--t-normal) var(--t-easing);
-}
-
-#solia-modal-drawer.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.solia-drawer-content {
-  width: 280px;
-  height: 100%;
-  background: var(--panel-bg);
-  backdrop-filter: blur(20px);
-  border-right: 1px solid var(--panel-border);
-  padding: var(--sp-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-4);
-  transform: translateX(-100%);
-  transition: transform var(--t-spring);
-  box-shadow: var(--shadow-lg);
-}
-
-#solia-modal-drawer.open .solia-drawer-content {
-  transform: translateX(0);
-}
-
-.solia-drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.solia-drawer-brand {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-light);
-  color: var(--md-sys-color-primary);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
-
-.solia-drawer-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(232,98,10,0.3) transparent;
-}
-
-/* =====================================================
-   INFO POPUP CARD
-   ===================================================== */
-#solia-info-modal {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-modal);
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity var(--t-normal) var(--t-easing),
-              visibility var(--t-normal) var(--t-easing);
-}
-
-#solia-info-modal.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.solia-info-card {
-  width: 320px;
-  max-width: 92%;
-  background: rgba(18, 14, 10, 0.95);
-  backdrop-filter: blur(20px);
-  border-radius: var(--md-shape-corner-xl);
-  border: 1px solid var(--panel-border);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transform: scale(0.95) translateY(12px);
-  transition: transform var(--t-spring);
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(232, 98, 10, 0.15);
-}
-
-#solia-info-modal.open .solia-info-card {
-  transform: scale(1) translateY(0);
-}
-
-.solia-info-img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-}
-
-.solia-info-body {
-  padding: var(--sp-4);
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-3);
-}
-
-.solia-info-title {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-light);
-  color: var(--md-sys-color-on-surface);
-  line-height: var(--lh-tight);
-  letter-spacing: 0.5px;
-}
-
-.solia-info-text {
-  font-size: var(--fs-xs);
-  color: var(--md-sys-color-on-surface-variant);
-  line-height: var(--lh-relaxed);
-}
-
-.solia-info-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--sp-2);
-}
-
-/* =====================================================
-   M3 BUTTONS
-   ===================================================== */
-.solia-btn-primary {
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  border: none;
-  padding: 8px 18px;
-  border-radius: var(--md-shape-corner-full);
-  font-family: var(--font-family);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  cursor: pointer;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  transition: opacity var(--t-duration), transform var(--t-duration);
-}
-
-.solia-btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.solia-btn-secondary {
-  background: transparent;
-  color: var(--md-sys-color-on-surface-variant);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  padding: 8px 16px;
-  border-radius: var(--md-shape-corner-full);
-  font-family: var(--font-family);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color var(--t-duration), color var(--t-duration);
-}
-
-.solia-btn-secondary:hover {
-  border-color: rgba(232, 98, 10, 0.4);
-  color: var(--md-sys-color-on-surface);
-}
-
-/* =====================================================
-   MOBILE BOTTOM SHEET
-   ===================================================== */
-#solia-bottom-sheet {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: var(--z-drawer);
-  background: var(--panel-bg);
-  backdrop-filter: blur(24px);
-  border-top-left-radius: var(--md-shape-corner-xl);
-  border-top-right-radius: var(--md-shape-corner-xl);
-  border-top: 1px solid var(--panel-border);
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 var(--sp-4);
-  transform: translateY(calc(100% - 80px));
-  transition: transform var(--t-spring);
-  pointer-events: auto;
-  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5),
-              0 0 0 0.5px rgba(232, 98, 10, 0.2);
-}
-
-#solia-bottom-sheet.open {
-  transform: translateY(0);
-}
-
-.solia-sheet-handle-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-2);
-  padding: var(--sp-3) var(--sp-4) var(--sp-2);
-  cursor: pointer;
-  flex-shrink: 0;
-}
-
-.solia-sheet-handle {
-  width: 36px;
-  height: 3px;
-  border-radius: var(--md-shape-corner-full);
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* =====================================================
-   LOADING SCREEN — Premium luxury
-   ===================================================== */
-#solia-loading-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: #0A0604;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sp-8);
-  transition: opacity 0.8s ease;
-}
-
-/* Subtle radial glow behind loader */
-#solia-loading-screen::before {
-  content: '';
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(232,98,10,0.12) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-#solia-loading-screen.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.solia-loader-logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--sp-3);
-  text-align: center;
-  position: relative;
-}
-
-.solia-loader-logo {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border-radius: var(--md-shape-corner-medium);
-  filter: drop-shadow(0 0 16px rgba(232,98,10,0.4));
-}
-
-.solia-loader-title {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-3xl);
-  font-weight: var(--fw-light);
-  color: var(--md-sys-color-primary);
-  letter-spacing: 10px;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.solia-loader-subtitle {
-  font-size: var(--fs-2xs);
-  color: var(--md-sys-color-on-surface-variant);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
-.solia-loader-progress-box {
-  position: relative;
-  width: 96px;
-  height: 96px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.solia-loader-progress-circle {
-  position: absolute;
-  inset: 0;
-  transform: rotate(-90deg);
-}
-
-.solia-loader-progress-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.06);
-  stroke-width: 3;
-}
-
-.solia-loader-progress-bar {
-  fill: none;
-  stroke: var(--md-sys-color-primary);
-  stroke-width: 3;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 4px var(--md-sys-color-primary));
-  transition: stroke-dashoffset 0.3s ease;
-}
-
-.solia-loader-progress-text {
-  font-family: var(--font-family);
-  font-size: var(--fs-base);
-  font-weight: var(--fw-bold);
-  color: var(--md-sys-color-on-surface);
-  position: relative;
-  z-index: 1;
-}
-
-.solia-loader-desc {
-  font-size: var(--fs-xs);
-  color: var(--md-sys-color-on-surface-variant);
-  letter-spacing: 1.5px;
-  opacity: 0.6;
-}
-
-/* =====================================================
-   TOOLBAR — Compact floating dock
+   TOOLBAR (Top Right Controls)
    ===================================================== */
 #solia-toolbar {
+  position: absolute;
+  top: var(--sp-4);
+  right: var(--sp-4);
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: var(--sp-4); /* Khoảng cách giữa các NHÓM */
+  z-index: var(--z-toolbar);
+  pointer-events: none;
+}
+
+.solia-toolbar-group {
+  display: flex;
+  flex-direction: column;
   gap: 2px;
-  background: var(--panel-bg);
-  backdrop-filter: blur(20px);
+  background: var(--surface-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-full);
   padding: 4px;
-  border-radius: var(--md-shape-corner-full);
-  border: 1px solid var(--panel-border);
   pointer-events: auto;
   box-shadow: var(--shadow-md);
 }
 
 .solia-toolbar-btn {
-  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
   background: transparent;
   border: none;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--text-primary);
   cursor: pointer;
-  width: 34px;
-  height: 34px;
-  border-radius: var(--md-shape-corner-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--t-duration) var(--t-easing),
-              color var(--t-duration) var(--t-easing);
+  transition: var(--transition);
+  position: relative;
 }
 
 .solia-toolbar-btn:hover {
-  background: var(--md-sys-color-surface-container-high);
-  color: var(--md-sys-color-on-surface);
+  background: var(--surface-2);
 }
 
 .solia-toolbar-btn.active {
-  background: var(--md-sys-color-primary-light);
-  color: var(--md-sys-color-primary);
+  color: var(--accent);
+  background: var(--accent-dim);
 }
 
-.solia-toolbar-divider {
-  width: 1px;
-  height: 18px;
-  background: var(--md-sys-color-outline-variant);
-  margin: 0 2px;
-  flex-shrink: 0;
+.solia-toolbar-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
-/* Tooltip */
+/* Tooltip cho toolbar */
 .solia-tooltip {
   position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(18, 14, 10, 0.95);
-  color: var(--md-sys-color-on-surface);
-  font-family: var(--font-family);
-  font-size: var(--fs-2xs);
-  font-weight: var(--fw-medium);
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(10px);
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 6px 12px;
+  border-radius: var(--r-xs);
+  font-size: var(--fs-xs);
   white-space: nowrap;
-  padding: 4px 10px;
-  border-radius: var(--md-shape-corner-xs);
-  border: 1px solid var(--panel-border);
   pointer-events: none;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity var(--t-fast) var(--t-easing),
-              visibility var(--t-fast) var(--t-easing);
-  z-index: var(--z-tooltip);
+  transition: var(--transition);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .solia-toolbar-btn:hover .solia-tooltip {
   opacity: 1;
-  visibility: visible;
+  transform: translateY(-50%) translateX(0);
 }
 
+
 /* =====================================================
-   MINIMAP — Compact card
+   PRIMARY FAB (Action Button - The ONLY orange element)
    ===================================================== */
-#solia-minimap-container {
-  position: absolute;
-  bottom: calc(48px + var(--sp-4));
-  right: 0;
-  width: 280px;
-  height: 200px;
-  border-radius: var(--md-shape-corner-large);
-  border: 1px solid var(--panel-border);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
+#solia-fab-container {
+  margin-bottom: var(--sp-6);
+  margin-right: var(--sp-6);
   pointer-events: auto;
-  background: var(--md-sys-color-surface-container);
+}
+
+.solia-m3-fab {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  background: var(--accent);
+  color: white; /* Luôn trắng trên nền cam */
+  border: none;
+  border-radius: var(--r-full);
+  padding: 0 var(--sp-6);
+  height: 56px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  box-shadow: var(--shadow-accent);
+  transition: var(--transition-spring);
+}
+
+.solia-m3-fab:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px var(--accent-glow);
+}
+
+.solia-m3-fab:active {
+  transform: translateY(1px);
+}
+
+.solia-m3-fab-sm {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  justify-content: center;
 }
 
 /* =====================================================
-   FLOORPLAN DRAWER
+   BOTTOM SHEET / DRAWER / MODAL
    ===================================================== */
-#solia-floorplan-drawer {
+/* Drawer */
+#solia-modal-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-slow) var(--ease);
+}
+#solia-modal-drawer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.solia-drawer-content {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 272px;
-  height: 100%;
-  background: var(--panel-bg);
-  backdrop-filter: blur(20px);
-  border-radius: var(--md-shape-corner-large) 0 0 var(--md-shape-corner-large);
-  border: 1px solid var(--panel-border);
-  border-right: none;
+  left: 0;
+  bottom: 0;
+  width: 320px;
+  background: var(--surface-bg);
+  border-right: 1px solid var(--border-subtle);
+  transform: translateX(-100%);
+  transition: transform var(--t-spring) var(--ease-spring);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  pointer-events: auto;
-  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
-  transform: translateX(110%);
-  transition: transform var(--t-spring);
 }
-
-#solia-floorplan-drawer.open {
+#solia-modal-drawer.open .solia-drawer-content {
   transform: translateX(0);
 }
-
-.solia-floorplan-header {
+.solia-drawer-header {
+  padding: var(--sp-5) var(--sp-5);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: var(--sp-3) var(--sp-4);
-  border-bottom: 1px solid var(--md-sys-color-outline-variant);
-  flex-shrink: 0;
+  justify-content: space-between;
 }
-
-.solia-floorplan-header h3 {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-base);
-  font-weight: var(--fw-light);
-  color: var(--md-sys-color-primary);
-  letter-spacing: 1px;
+.solia-drawer-brand {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  color: var(--text-primary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
 }
-
-.solia-floorplan-body {
+.solia-drawer-body {
+  padding: var(--sp-4);
   flex: 1;
   overflow-y: auto;
-  padding: var(--sp-3);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(232,98,10,0.3) transparent;
 }
-
-.solia-floorplan-thumb-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-2);
-}
-
-.solia-floorplan-thumb {
-  background: var(--md-sys-color-surface-container);
-  border-radius: var(--md-shape-corner-small);
-  border: 1px solid transparent;
-  overflow: hidden;
-  cursor: pointer;
-  transition: border-color var(--t-duration) var(--t-easing),
-              transform var(--t-duration) var(--t-easing);
-}
-
-.solia-floorplan-thumb:hover {
-  border-color: rgba(232, 98, 10, 0.4);
-  transform: scale(1.02);
-}
-
-.solia-floorplan-thumb.active {
-  border-color: var(--md-sys-color-primary);
-  box-shadow: 0 0 0 1px var(--md-sys-color-primary);
-}
-
-.solia-floorplan-thumb img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  display: block;
-}
-
-.solia-floorplan-thumb-title {
-  padding: 3px var(--sp-2) 5px;
-  font-size: var(--fs-2xs);
-  color: var(--md-sys-color-on-surface-variant);
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* =====================================================
-   CLOSE BUTTONS
-   ===================================================== */
 .solia-menu-close-btn {
   background: transparent;
   border: none;
-  color: var(--md-sys-color-on-surface-variant);
+  color: var(--text-secondary);
   cursor: pointer;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--md-shape-corner-full);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color var(--t-duration), color var(--t-duration);
-  flex-shrink: 0;
+  transition: var(--transition);
 }
-
 .solia-menu-close-btn:hover {
-  background: var(--md-sys-color-surface-container-high);
-  color: var(--md-sys-color-on-surface);
+  background: var(--surface-1);
+  color: var(--text-primary);
 }
 
-/* =====================================================
-   RIPPLE EFFECT
-   ===================================================== */
-.solia-ripple-container {
-  position: relative;
-  overflow: hidden;
+/* Bottom Sheet */
+#solia-bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface-panel);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  z-index: var(--z-drawer);
+  transform: translateY(calc(100% - 64px)); /* Show handle */
+  transition: transform var(--t-spring) var(--ease-spring);
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
 }
-
-.solia-ripple-effect {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(232, 98, 10, 0.2);
-  transform: scale(0);
-  animation: soliaRipple 0.5s linear forwards;
-  pointer-events: none;
+#solia-bottom-sheet.open {
+  transform: translateY(0);
 }
-
-/* =====================================================
-   BOOKING MODAL
-   ===================================================== */
-#solia-booking-modal {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-modal);
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  display: none;
+.solia-sheet-handle-container {
+  height: 24px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  cursor: grab;
+}
+.solia-sheet-handle {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+
+/* Booking Modal / Info Modal */
+#solia-booking-modal, #solia-info-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-slow) var(--ease);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#solia-booking-modal.open, #solia-info-modal.open {
+  opacity: 1;
   pointer-events: auto;
 }
 
-#solia-booking-modal.open {
-  display: flex;
-}
-
-.solia-booking-card {
-  width: 320px;
-  max-width: 92%;
-  background: rgba(18, 14, 10, 0.97);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--md-shape-corner-xl);
-  padding: var(--sp-5);
+.solia-booking-card, .solia-info-card {
+  background: var(--surface-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: var(--sp-6);
+  width: 90%;
+  max-width: 420px;
+  transform: translateY(20px) scale(0.95);
+  transition: transform var(--t-spring) var(--ease-spring);
+  box-shadow: var(--shadow-lg);
   display: flex;
   flex-direction: column;
   gap: var(--sp-4);
-  box-shadow: var(--shadow-lg), 0 0 40px rgba(232,98,10,0.1);
 }
 
-.solia-booking-title {
-  font-family: var(--font-family-serif);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-light);
-  color: var(--md-sys-color-on-surface);
-  letter-spacing: 0.5px;
+#solia-booking-modal.open .solia-booking-card,
+#solia-info-modal.open .solia-info-card {
+  transform: translateY(0) scale(1);
 }
 
-.solia-booking-subtitle {
-  font-size: var(--fs-xs);
-  color: var(--md-sys-color-on-surface-variant);
-  line-height: var(--lh-normal);
-  margin-top: -var(--sp-2);
+.solia-booking-title, .solia-info-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  margin: 0;
 }
 
 .solia-booking-fields {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
+  gap: var(--sp-3);
 }
 
-#solia-booking-modal input[type="text"],
-#solia-booking-modal input[type="tel"] {
+.solia-booking-fields input {
   width: 100%;
-  padding: 10px var(--sp-3);
-  background: var(--md-sys-color-surface-container);
-  border: 1px solid var(--md-sys-color-outline-variant);
-  border-radius: var(--md-shape-corner-small);
-  color: var(--md-sys-color-on-surface);
-  font-family: var(--font-family);
-  font-size: var(--fs-sm);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  padding: 0 var(--sp-4);
+  height: 48px;
+  border-radius: var(--r-md);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  transition: var(--transition);
+}
+
+.solia-booking-fields input:focus {
   outline: none;
-  transition: border-color var(--t-duration);
-  box-sizing: border-box;
+  border-color: var(--accent);
+  background: var(--surface-2);
 }
 
-#solia-booking-modal input:focus {
-  border-color: var(--md-sys-color-primary);
-  box-shadow: 0 0 0 1px rgba(232, 98, 10, 0.2);
-}
-
-#solia-booking-modal input::placeholder {
-  color: var(--md-sys-color-on-surface-variant);
-  opacity: 0.6;
-}
-
-/* =====================================================
-   RIGHT OVERLAY CHILD POSITIONING
-   ===================================================== */
-#solia-right-overlay #solia-toolbar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  pointer-events: auto;
-}
-
-#solia-right-overlay #solia-minimap-container {
-  bottom: calc(48px + var(--sp-3));
-  right: 0;
-}
-
-#solia-right-overlay #solia-fab-container {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  pointer-events: auto;
-}
-
-/* =====================================================
-   RESPONSIVE OVERRIDES
-   ===================================================== */
-@media (max-width: 768px) {
-  #solia-right-overlay {
-    display: none;
-  }
-
-  #solia-fab-container-mobile {
-    position: fixed;
-    bottom: 100px;
-    right: var(--sp-4);
-    z-index: var(--z-toolbar);
-    pointer-events: auto;
-  }
-}
-
-@media (min-width: 769px) {
-  #solia-bottom-sheet {
-    display: none !important;
-  }
-}
-
-/* =====================================================
-   HOTSPOT — Glowing minimal
-   ===================================================== */
-.solia-hotspot-container {
+.solia-info-actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  pointer-events: auto;
+  justify-content: flex-end;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
 }
 
-.solia-hotspot-pulse {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40px;
+.solia-btn-primary, .solia-btn-secondary {
   height: 40px;
-  transform: translate(-50%, -50%);
-  background: var(--md-sys-color-primary);
-  border-radius: 50%;
-  opacity: 0;
-  animation: solia-pulse 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
+  padding: 0 var(--sp-5);
+  border-radius: var(--r-full);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
 }
 
-@keyframes solia-pulse {
-  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0.7; }
-  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+.solia-btn-primary {
+  background: var(--accent);
+  color: white;
+}
+.solia-btn-primary:hover {
+  background: var(--accent-hover);
 }
 
-.solia-hotspot-core {
-  width: 28px;
-  height: 28px;
-  background: rgba(13, 13, 13, 0.85);
-  border: 1.5px solid var(--md-sys-color-primary);
-  color: var(--md-sys-color-primary);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 0 10px rgba(232, 98, 10, 0.3);
-  transition: background-color var(--t-spring), color var(--t-spring), transform var(--t-spring);
+.solia-btn-secondary {
+  background: var(--surface-2);
+  color: var(--text-primary);
 }
-
-.solia-hotspot-container:hover .solia-hotspot-core {
-  background: var(--md-sys-color-primary);
-  color: var(--md-sys-color-on-primary);
-  transform: scale(1.15);
-}
-
-.solia-hotspot-label {
-  margin-top: 6px;
-  background: rgba(13, 13, 13, 0.9);
-  color: var(--md-sys-color-on-surface);
-  font-family: var(--font-family);
-  font-size: var(--fs-2xs);
-  font-weight: var(--fw-semibold);
-  padding: 3px 10px;
-  border-radius: var(--md-shape-corner-full);
-  box-shadow: var(--shadow-sm);
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity var(--t-spring), transform var(--t-spring);
-  pointer-events: none;
-  border: 1px solid var(--panel-border);
-  letter-spacing: 0.3px;
-}
-
-.solia-hotspot-container:hover .solia-hotspot-label {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =====================================================
-   ORANGE GRADIENT ACCENT UTILITIES
-   ===================================================== */
-.solia-accent-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--md-sys-color-primary);
-  flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(232, 98, 10, 0.5);
-}
-
-/* Group label header in list */
-.solia-list-group-label {
-  font-size: var(--fs-2xs);
-  font-weight: var(--fw-bold);
-  color: var(--md-sys-color-primary);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: var(--sp-3) var(--sp-3) var(--sp-1);
-  opacity: 0.7;
+.solia-btn-secondary:hover {
+  background: var(--surface-3);
 }

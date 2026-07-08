@@ -1,35 +1,38 @@
 /**
- * ui.css
- * Solia Virtual Tour — Orange Luxury Layout
- * Compact, zero-whitespace, grid-based structure
+ * ui.css — GENERA Virtual Tour
+ * Layout Grid · Glassmorphism Panel · Collapse Animation
+ *
+ * CD NOTES:
+ * · Panel trái 300px, bo tròn xl, glass đúng chuẩn
+ * · Grid gap = 16px — không padding thừa
+ * · Collapse: slide + fade đồng thời, 300ms ease
  */
 
 /* =====================================================
-   GLOBAL RESET & BASE
+   BASE RESET
    ===================================================== */
 #solia-ui {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: var(--z-overlay);
-  font-family: var(--font-family);
-  color: var(--md-sys-color-on-surface);
+  inset: 0;
+  z-index: var(--z-ui);
+  font-family: var(--font-sans);
+  color: var(--text-primary);
   pointer-events: none;
+
   display: grid;
-  grid-template-columns: 320px 1fr;
-  grid-template-rows: 1fr;
+  grid-template-columns: 300px 1fr;
   padding: var(--sp-4);
   gap: var(--sp-4);
   box-sizing: border-box;
-  transition: grid-template-columns var(--t-spring);
+
+  transition: grid-template-columns var(--t-spring) var(--ease-spring),
+              gap var(--t-spring) var(--ease-spring),
+              padding var(--t-spring) var(--ease-spring);
 }
 
 #solia-ui.menu-collapsed {
   grid-template-columns: 0px 1fr;
   gap: 0;
-  padding-left: var(--sp-4);
 }
 
 #solia-ui * {
@@ -38,72 +41,83 @@
   padding: 0;
 }
 
-.solia-interactive {
-  pointer-events: auto;
-}
+.solia-interactive { pointer-events: auto; }
 
 /* =====================================================
-   M3 STATE LAYER (Hover/Press micro-interaction)
+   M3 STATE LAYER
    ===================================================== */
 .solia-m3-state {
   position: relative;
   overflow: hidden;
 }
-
 .solia-m3-state::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: currentColor;
+  background: currentColor;
   opacity: 0;
-  transition: opacity var(--t-duration) var(--t-easing);
+  transition: opacity var(--t-base) var(--ease);
   pointer-events: none;
   border-radius: inherit;
 }
-
-.solia-m3-state:hover::after  { opacity: 0.07; }
-.solia-m3-state:active::after { opacity: 0.14; }
+.solia-m3-state:hover::after  { opacity: 0.06; }
+.solia-m3-state:active::after { opacity: 0.13; }
 
 /* =====================================================
-   LEFT PANEL
+   LEFT PANEL — Glassmorphism
+   =====================================================
+   Kích thước: 300px × full height
+   Nền: rgba(14,14,14,0.86) + blur(24px)
+   Bo tròn: 24px
+   Border: 1px solid rgba(255,255,255,0.07) — trung tính (không cam)
+   Bóng đổ: 0 8px 36px rgba(0,0,0,0.62)
    ===================================================== */
 #solia-left-panel {
   grid-column: 1;
   grid-row: 1;
-  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--panel-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: var(--md-shape-corner-xl);
-  border: 1px solid var(--panel-border);
+  background: var(--surface-panel);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-radius: var(--r-xl);
+  border: 1px solid var(--border-subtle);
   overflow: hidden;
   pointer-events: auto;
-  transition: transform var(--t-spring), opacity var(--t-duration);
-  box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.05);
+  box-shadow: var(--shadow-lg);
+
+  /* Collapse animation */
+  transition:
+    transform var(--t-spring) var(--ease-spring),
+    opacity var(--t-slow) var(--ease);
 }
 
-/* Left panel TOP accent strip */
+/* Top hairline gradient — neutral, không cam */
 #solia-left-panel::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 20px;
-  right: 20px;
+  left: var(--r-xl);
+  right: var(--r-xl);
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--md-sys-color-primary), transparent);
-  opacity: 0.6;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.12) 40%,
+    rgba(255,255,255,0.12) 60%,
+    transparent 100%);
+  pointer-events: none;
 }
 
 #solia-ui.menu-collapsed #solia-left-panel {
-  transform: translateX(-110%);
+  transform: translateX(-112%);
   opacity: 0;
   pointer-events: none;
 }
 
-/* Reopen button (FAB to restore the panel) */
+/* =====================================================
+   REOPEN BUTTON — khi panel thu gọn
+   ===================================================== */
 #solia-menu-reopen-btn {
   position: absolute;
   top: var(--sp-4);
@@ -111,14 +125,16 @@
   z-index: var(--z-toolbar);
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.7);
-  transition: opacity var(--t-spring), transform var(--t-spring);
+  transform: scale(0.75) translateX(-8px);
+  transition:
+    opacity var(--t-slow) var(--ease),
+    transform var(--t-spring) var(--ease-spring);
 }
 
 #solia-ui.menu-collapsed #solia-menu-reopen-btn {
   opacity: 1;
   pointer-events: auto;
-  transform: scale(1);
+  transform: scale(1) translateX(0);
 }
 
 /* =====================================================
@@ -126,7 +142,6 @@
    ===================================================== */
 #solia-right-overlay {
   grid-column: 2;
-  grid-row: 1;
   position: relative;
   height: 100%;
   display: flex;
@@ -142,66 +157,45 @@
    ===================================================== */
 .solia-scroll-x {
   display: flex;
-  flex-direction: row;
   overflow-x: auto;
   scrollbar-width: none;
-  -ms-overflow-style: none;
   gap: var(--sp-2);
 }
-
 .solia-scroll-x::-webkit-scrollbar { display: none; }
 
 .solia-scroll-y {
   flex: 1;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(232,98,10,0.3) transparent;
+  scrollbar-color: rgba(255,255,255,0.12) transparent;
 }
-
-.solia-scroll-y::-webkit-scrollbar {
-  width: 3px;
-}
-
-.solia-scroll-y::-webkit-scrollbar-track {
-  background: transparent;
-}
-
+.solia-scroll-y::-webkit-scrollbar       { width: 3px; }
+.solia-scroll-y::-webkit-scrollbar-track { background: transparent; }
 .solia-scroll-y::-webkit-scrollbar-thumb {
-  background: rgba(232, 98, 10, 0.35);
+  background: rgba(255,255,255,0.14);
   border-radius: 2px;
 }
 
 /* Divider */
 .solia-m3-divider {
   height: 1px;
-  background: var(--md-sys-color-outline-variant);
+  background: var(--border-subtle);
   flex-shrink: 0;
+  margin: 0;
 }
 
-/* =====================================================
-   PANO
-   ===================================================== */
-#pano {
-  z-index: var(--z-pano);
-}
+/* Pano */
+#pano { z-index: var(--z-pano); }
 
 /* =====================================================
-   RESPONSIVE — MOBILE (≤768px)
+   RESPONSIVE — Mobile (≤768px)
    ===================================================== */
 @media (max-width: 768px) {
   #solia-ui {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
     padding: 0;
     gap: 0;
   }
-
-  #solia-left-panel {
-    display: none !important;
-  }
-
-  #solia-right-overlay {
-    width: 100%;
-    height: 100%;
-  }
+  #solia-left-panel     { display: none !important; }
+  #solia-right-overlay  { width: 100%; height: 100%; }
 }
