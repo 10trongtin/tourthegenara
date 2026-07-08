@@ -1,0 +1,5 @@
+# Ignore heavy virtual tour panorama tiles directory
+panos/
+*.xml - backup*
+tour_testingserver_macos
+.cursor/

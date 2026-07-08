@@ -56,9 +56,9 @@ class SoliaToolbar {
         </button>
       </div>
 
-      <!-- MAP MODAL -->
+      <!-- MAP MODAL (Optimized with placeholder for lazy-loading) -->
       <div id="solia-minimap-container" style="display: none;">
-        <iframe id="solia-minimap-iframe" src="${SoliaConfig.googleMapUrl}" allowfullscreen></iframe>
+        <div id="solia-minimap-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background-color: var(--md-sys-color-surface-container); color: var(--md-sys-color-on-surface-variant); font-size: var(--fs-sm);">Đang tải bản đồ...</div>
       </div>
     `;
 
@@ -73,6 +73,12 @@ class SoliaToolbar {
       btn.classList.add("active");
       this.minimapContainer.style.display = "block";
       this.minimapContainer.classList.add("animate-scale-up");
+      
+      // Lazy-load the heavy Google Map iframe on demand (speed optimization)
+      const placeholder = document.getElementById("solia-minimap-placeholder");
+      if (placeholder) {
+        placeholder.outerHTML = `<iframe id="solia-minimap-iframe" src="${SoliaConfig.googleMapUrl}" allowfullscreen style="width: 100%; height: 100%; border: none;"></iframe>`;
+      }
     } else {
       btn.classList.remove("active");
       this.minimapContainer.style.display = "none";
