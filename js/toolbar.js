@@ -14,8 +14,8 @@ class SoliaToolbar {
 
   render() {
     const toolbarHTML = `
-      <!-- M3 Style Floating Utility Dock (Top-Right position for clean full-screen viewing) -->
-      <div id="solia-toolbar" class="solia-interactive" style="position: absolute; top: var(--sp-6); right: var(--sp-6); display: flex; align-items: center; gap: var(--sp-2); background-color: var(--md-sys-color-surface-container); padding: 6px var(--sp-3); border-radius: var(--md-shape-corner-full); border: 1px solid var(--md-sys-color-outline); z-index: var(--z-toolbar);">
+      <!-- M3 Style Floating Utility Dock — positioned via CSS in right-overlay -->
+      <div id="solia-toolbar" class="solia-interactive">
         
         <!-- Toggle Map -->
         <button class="solia-toolbar-btn solia-m3-state solia-interactive" id="btn-minimap" onclick="SoliaUI.toolbar.toggleMinimap()" aria-label="Toggle map">
@@ -62,7 +62,8 @@ class SoliaToolbar {
       </div>
     `;
 
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', toolbarHTML);
+    // Inject toolbar into rightOverlay so absolute positioning works correctly
+    this.orch.rightOverlay.insertAdjacentHTML('afterbegin', toolbarHTML);
     this.minimapContainer = document.getElementById("solia-minimap-container");
   }
 
@@ -160,7 +161,8 @@ class SoliaFloorplan {
       </div>
     `;
 
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', floorplanHTML);
+    // Inject floorplan drawer into rightOverlay so absolute positioning works correctly
+    this.orch.rightOverlay.insertAdjacentHTML('beforeend', floorplanHTML);
     this.drawerEl = document.getElementById("solia-floorplan-drawer");
 
     this.initEvents();

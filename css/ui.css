@@ -96,6 +96,7 @@
   justify-content: flex-end;
   align-items: flex-end;
   pointer-events: none;
+  overflow: hidden; /* Clip floorplan drawer slide-in */
 }
 
 /* FAB Action button wrapper */

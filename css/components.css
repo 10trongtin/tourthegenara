@@ -833,12 +833,9 @@
 }
 
 /* =====================================================
-   RIGHT OVERLAY WRAPPER — Must be position: relative
-   for absolute children (toolbar, minimap, floorplan)
+   RIGHT OVERLAY CHILD POSITIONING
+   (Base layout defined in ui.css #solia-right-overlay)
    ===================================================== */
-#solia-right-overlay {
-  position: relative;
-}
 
 /* Toolbar anchored to top-right of right overlay */
 #solia-right-overlay #solia-toolbar {
