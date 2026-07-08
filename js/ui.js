@@ -1,6 +1,6 @@
 /**
  * ui.js
- * Solia Virtual Tour — Orange Luxury Design System
+ * Solia Virtual Tour — Orange/Gold Luxury Design System
  * Main Orchestrator & HTML Overlay Injection
  */
 
@@ -12,15 +12,16 @@ class SoliaUIOrchestrator {
     this.domReady = false;
     this.pendingKrpanoInstance = null;
 
-    // Ensure DOM is ready before trying to inject the Loading Screen
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => this.onDOMReady());
-    } else {
+    // Direct check of document.body presence to bypass readyState parsing inconsistencies
+    if (document.body) {
       this.onDOMReady();
+    } else {
+      document.addEventListener("DOMContentLoaded", () => this.onDOMReady());
     }
   }
 
   onDOMReady() {
+    if (this.domReady) return;
     this.domReady = true;
     this.initLoadingScreen();
     
@@ -41,6 +42,8 @@ class SoliaUIOrchestrator {
 
   // Create loading screen markup
   initLoadingScreen() {
+    if (!document.body) return; // Defensive check
+    
     const loadingHTML = `
       <div id="solia-loading-screen">
         <div class="solia-loader-logo-container">
