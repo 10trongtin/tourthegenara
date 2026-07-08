@@ -9,15 +9,37 @@ class SoliaUIOrchestrator {
     this.krpano = null;
     this.currentScene = "";
     this.initialized = false;
+    this.domReady = false;
+    this.pendingKrpanoInstance = null;
+
+    // Ensure DOM is ready before trying to inject the Loading Screen
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => this.onDOMReady());
+    } else {
+      this.onDOMReady();
+    }
+  }
+
+  onDOMReady() {
+    this.domReady = true;
     this.initLoadingScreen();
+    
+    // If Krpano finished loading before DOMContentLoaded, initialize UI now
+    if (this.pendingKrpanoInstance) {
+      this.setKrpano(this.pendingKrpanoInstance);
+    }
   }
 
   setKrpano(krpanoInstance) {
+    if (!this.domReady) {
+      this.pendingKrpanoInstance = krpanoInstance;
+      return;
+    }
     this.krpano = krpanoInstance;
     this.initializeUI();
   }
 
-  // Create loading screen markup immediately on execution
+  // Create loading screen markup
   initLoadingScreen() {
     const loadingHTML = `
       <div id="solia-loading-screen">

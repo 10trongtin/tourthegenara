@@ -15,6 +15,14 @@
 	<link rel="stylesheet" href="css/ui.css">
 	<link rel="stylesheet" href="css/components.css">
 
+	<!-- UI Scripts (Pre-loaded in head to ensure window.SoliaUI is defined before Krpano onready triggers) -->
+	<script src="js/config.js"></script>
+	<script src="js/menu.js"></script>
+	<script src="js/toolbar.js"></script>
+	<script src="js/hotspot.js"></script>
+	<script src="js/transition.js"></script>
+	<script src="js/ui.js"></script>
+
 	<style>
 		html { height: 100%; }
 		body { 
@@ -65,14 +73,6 @@
 			});
 		</script>
 	</div>
-
-	<!-- UI Scripts (Pre-loaded before UI Orchestrator starts) -->
-	<script src="js/config.js"></script>
-	<script src="js/menu.js"></script>
-	<script src="js/toolbar.js"></script>
-	<script src="js/hotspot.js"></script>
-	<script src="js/transition.js"></script>
-	<script src="js/ui.js"></script>
 
 </body>
 </html>
