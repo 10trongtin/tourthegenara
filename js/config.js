@@ -15,6 +15,7 @@ const SoliaConfig = {
     {
       id: "tong_quan",
       title: "TỔNG QUAN DỰ ÁN",
+      icon: "explore", // Group-level icon
       items: [
         {
           name: "scene_Lipqn_ktglt_vpfng",
@@ -51,6 +52,7 @@ const SoliaConfig = {
     {
       id: "phan_khu",
       title: "CÁC PHÂN KHU",
+      icon: "apartment", // Group-level icon
       items: [
         {
           name: "scene_View_trung_tpim_dthx_phn",
@@ -77,6 +79,7 @@ const SoliaConfig = {
     {
       id: "nha_mau",
       title: "NHÀ MẪU",
+      icon: "home", // Group-level icon
       items: [
         {
           name: "scene_Nhpg_mtgru",
@@ -93,6 +96,7 @@ const SoliaConfig = {
     {
       id: "tien_ich",
       title: "TIỆN ÍCH",
+      icon: "pool", // Group-level icon
       items: [
         {
           name: "scene_Clubhouse_-_Htht_bshi",

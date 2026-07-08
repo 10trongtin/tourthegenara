@@ -22,16 +22,16 @@
   --c-active:       #b89b6a;
 
   /* --- Backgrounds --- */
-  --c-bg:           #141210; /* Very dark warm charcoal */
-  --c-surface:      rgba(24, 21, 19, 0.94); /* Warm dark surface translucent */
-  --c-surface-dark: rgba(16, 14, 12, 0.96);
+  --c-bg:           #1e1b17; /* Warm dark brown background */
+  --c-surface:      rgba(30, 27, 23, 0.98); /* Warm dark surface translucent */
+  --c-surface-dark: rgba(22, 20, 17, 0.98);
   --c-overlay:      rgba(184, 155, 106, 0.04);
 
   /* --- Text --- */
   --c-text:         #F3EFE9; /* Warm off-white */
-  --c-text-muted:   rgba(255, 255, 255, 0.45); /* Muted warm grey */
+  --c-text-muted:   #a8a294; /* Warm grey for inactive items */
   --c-text-light:   #FFFFFF;
-  --c-text-inverse: #141210;
+  --c-text-inverse: #1e1b17;
 
   /* --- Borders --- */
   --c-border:       rgba(184, 155, 106, 0.15); /* Delicate gold-tinted border */
@@ -40,11 +40,11 @@
 
   /* --- Gradients --- */
   --g-primary:      linear-gradient(135deg, #b89b6a 0%, #d9c5a0 100%);
-  --g-warm:         linear-gradient(160deg, #24211e 0%, #141210 100%);
-  --g-glass:        linear-gradient(135deg, rgba(28, 25, 23, 0.96) 0%, rgba(20, 18, 16, 0.92) 100%);
-  --g-dark-glass:   linear-gradient(135deg, rgba(16, 14, 12, 0.98) 0%, rgba(10, 9, 8, 0.95) 100%);
+  --g-warm:         linear-gradient(160deg, #302b25 0%, #1e1b17 100%);
+  --g-glass:        linear-gradient(135deg, rgba(30, 27, 23, 0.98) 0%, rgba(22, 20, 17, 0.94) 100%);
+  --g-dark-glass:   linear-gradient(135deg, rgba(22, 20, 17, 0.98) 0%, rgba(14, 13, 11, 0.96) 100%);
   --g-orange-glow:  radial-gradient(ellipse at center, rgba(184, 155, 106, 0.15) 0%, transparent 70%);
-  --g-loading-bg:   linear-gradient(160deg, #100e0d 0%, #1a1715 50%, #100e0d 100%);
+  --g-loading-bg:   linear-gradient(160deg, #161411 0%, #221f1a 50%, #161411 100%);
 
   /* --- Typography --- */
   --font-family:    'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
@@ -71,7 +71,7 @@
 
   /* --- Border Radius --- */
   --r-xs:   4px;
-  --r-sm:   8px;
+  --r-sm:   6px; /* Active item radius */
   --r-md:   12px;
   --r-lg:   16px;
   --r-xl:   24px;
@@ -101,16 +101,16 @@
   --shadow-inset:   inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
   /* --- Glass Morphism --- */
-  --glass-bg:        rgba(28, 25, 23, 0.94);
+  --glass-bg:        rgba(30, 27, 23, 0.98);
   --glass-border:    1px solid rgba(184, 155, 106, 0.15);
   --glass-blur:      blur(20px) saturate(140%) brightness(0.95);
   --glass-blur-dark: blur(24px) saturate(120%);
 
   /* --- Transitions --- */
   --t-fast:    150ms ease-out;
-  --t-normal:  300ms ease-out;
+  --t-normal:  200ms ease; /* Update rotation chevron ease transition */
   --t-slow:    500ms ease-out;
-  --t-spring:  400ms cubic-bezier(0.25, 1, 0.5, 1);
+  --t-spring:  350ms cubic-bezier(0.25, 1, 0.5, 1);
 
   /* --- Z-index Layers --- */
   --z-pano:      0;
@@ -118,7 +118,7 @@
   --z-overlay:   100;
   --z-toolbar:   200;
   --z-menu:      300;
-  --z-modal:     400;
+  --z-modal:     9999; /* Ensure modal popup is above everything else */
   --z-loading:   500;
   --z-tooltip:   600;
 

@@ -1,7 +1,7 @@
 /**
  * components.css
  * Solia Virtual Tour — Orange/Gold Luxury Design System
- * Updated with Premium Accordion, Serif Branding, and Visual Hierarchy
+ * Accordion menu drawer, icon rail, and popup card formatting.
  */
 
 /* =====================================================
@@ -118,14 +118,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transform: translateX(calc(-100% - var(--sp-6)));
-  transition: transform var(--t-spring);
   border: 1px solid rgba(184, 155, 106, 0.12);
-  background: var(--c-surface);
-}
-
-#solia-menu-drawer.open {
-  transform: translateX(0);
+  background: var(--c-bg); /* Dark warm brown #1e1b17 */
+  transition: transform var(--t-spring), width var(--t-spring);
+  transform: translateX(0); /* On desktop, it is always layout-positioned */
 }
 
 .solia-menu-header-wrapper {
@@ -149,7 +145,7 @@
 .solia-brand-collection {
   font-size: 9px;
   font-weight: var(--fw-semibold);
-  color: var(--c-primary);
+  color: var(--c-primary); /* Gold #b89b6a */
   letter-spacing: 4px;
 }
 
@@ -181,7 +177,6 @@
   align-items: center;
   justify-content: center;
   transition: background var(--t-fast), color var(--t-fast);
-  margin-left: -32px; /* Pull toggle close button aligned */
   position: absolute;
   right: var(--sp-4);
   top: var(--sp-4);
@@ -244,7 +239,7 @@
 .solia-menu-group-header {
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
-  color: var(--c-primary);
+  color: var(--c-primary); /* Gold header #b89b6a */
   letter-spacing: 1.5px;
   padding: var(--sp-4) 0;
   display: flex;
@@ -258,13 +253,28 @@
   color: var(--c-hover);
 }
 
-.solia-chevron-icon {
-  color: var(--c-primary);
-  transition: transform var(--t-normal);
+.solia-group-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
 }
 
+.solia-group-icon {
+  color: var(--c-primary);
+}
+
+.solia-chevron-icon {
+  color: var(--c-primary);
+  transition: transform var(--t-normal); /* 200ms ease */
+}
+
+/* Chevron arrow rotates 180 degrees when open/close */
 .solia-menu-group.collapsed .solia-chevron-icon {
-  transform: rotate(-90deg);
+  transform: rotate(0deg);
+}
+
+.solia-menu-group:not(.collapsed) .solia-chevron-icon {
+  transform: rotate(180deg);
 }
 
 .solia-menu-group-items {
@@ -282,29 +292,30 @@
   pointer-events: none;
 }
 
-/* Inactive items: Muted warm grey */
+/* Inactive items: Muted warm grey #a8a294 */
 .solia-menu-item {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 10px var(--sp-3);
+  padding: 12px var(--sp-3); /* padding 12px creates at least 10px spacing and >40px height */
   margin-bottom: 4px;
   background: transparent;
   border: none;
   border-radius: var(--r-sm);
-  color: var(--c-text-muted); /* 45% white */
+  color: var(--c-text-muted); /* #a8a294 */
   font-family: var(--font-family);
   font-size: var(--fs-sm);
   font-weight: var(--fw-regular);
   text-align: left;
   cursor: pointer;
+  min-height: 42px; /* Target size touch height */
   transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
 }
 
 /* Custom bullet square */
 .solia-item-bullet {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border: 1.5px solid rgba(255, 255, 255, 0.25);
   border-radius: 1px;
   margin-right: var(--sp-3);
@@ -321,11 +332,12 @@
   border-color: #FFFFFF;
 }
 
-/* Active item: Highlight with light overlay and full color */
+/* Active item: Highlight with gold background light overlay and active border radius */
 .solia-menu-item.active {
-  background: rgba(255, 255, 255, 0.04);
+  background: #332e26 !important; /* Active light warm background */
   color: #FFFFFF;
   font-weight: var(--fw-medium);
+  border-radius: var(--r-sm) !important; /* active item 6px radius */
 }
 
 .solia-menu-item.active .solia-item-bullet {
@@ -452,7 +464,7 @@
 
 
 /* =====================================================
-   SCENE INFO POPUP CARD
+   POPUP CARD THÔNG TIN ĐIỂM (B)
    ===================================================== */
 #solia-info-modal {
   position: absolute;
@@ -460,7 +472,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: var(--z-modal);
+  z-index: var(--z-modal); /* z-index is higher than other overlays */
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   display: flex;
@@ -478,13 +490,18 @@
   pointer-events: auto;
 }
 
+/* Card container: fixed width, clean borders */
 .solia-info-card {
-  width: 90%;
-  max-width: 440px;
-  border-radius: var(--r-xl);
+  width: 340px; /* Fixed width 320px - 360px */
+  max-width: 90%;
+  min-width: 320px;
+  border-radius: var(--r-lg); /* 16px radius */
   overflow: hidden;
   border: 1px solid rgba(184, 155, 106, 0.15);
-  background: var(--c-surface);
+  background: var(--c-surface-dark);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
   transform: scale(0.95) translateY(10px);
   transition: transform var(--t-spring);
 }
@@ -493,47 +510,65 @@
   transform: scale(1) translateY(0);
 }
 
+/* Card thumbnail image: rounded top corners */
 .solia-info-img {
   width: 100%;
-  height: 180px;
+  height: 160px;
   object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: block;
 }
 
+/* Inside card body padding 16px, using flexbox */
 .solia-info-body {
-  padding: var(--sp-6);
+  padding: 16px; /* Inside padding exactly 16px */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
+/* Title bold, size 16-18px */
 .solia-info-title {
   font-family: var(--font-family-serif);
-  font-size: var(--fs-lg);
+  font-size: 18px;
+  font-weight: var(--fw-bold);
   color: #FFFFFF;
-  margin-bottom: var(--sp-2);
+  line-height: var(--lh-tight);
 }
 
+/* Description size 13-14px, muted color #a8a294 */
 .solia-info-text {
-  font-size: var(--fs-sm);
-  color: var(--c-text-muted);
+  font-size: 13px;
+  color: var(--c-text-muted); /* #a8a294 */
   line-height: var(--lh-normal);
-  margin-bottom: var(--sp-6);
+  margin-bottom: 8px;
 }
 
+/* Action button area: flexbox with minimum 12px gap, right aligned */
 .solia-info-actions {
   display: flex;
   justify-content: flex-end;
-  gap: var(--sp-3);
+  align-items: center;
+  gap: 12px; /* Minimum 12px gap */
+  margin-top: 4px;
 }
 
+/* Nút "Đến khu vực này": pill style, nowrap, dynamic fit-content width, horizontal padding 16px */
 .solia-btn-primary {
   background: var(--g-primary);
   color: var(--c-text-inverse);
   border: none;
-  padding: 10px var(--sp-6);
-  border-radius: var(--r-full);
+  padding: 8px 18px; /* Horizontal padding > 16px */
+  border-radius: 20px; /* Pill style border radius */
   font-family: var(--font-family);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   cursor: pointer;
-  transition: transform var(--t-fast), box-shadow var(--t-fast);
+  white-space: nowrap; /* Prevent text wrap or overflow */
+  width: fit-content; /* Dynamic width according to content */
+  min-width: fit-content;
+  transition: transform var(--t-fast);
 }
 
 .solia-btn-primary:hover {
@@ -544,12 +579,14 @@
   background: rgba(255, 255, 255, 0.03);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px var(--sp-6);
-  border-radius: var(--r-full);
+  padding: 8px 16px;
+  border-radius: 20px;
   font-family: var(--font-family);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   cursor: pointer;
+  white-space: nowrap;
+  width: fit-content;
   transition: background var(--t-fast), transform var(--t-fast);
 }
 
@@ -672,23 +709,65 @@
    RESPONSIVE DESIGN (MOBILE ADAPTATION)
    ===================================================== */
 @media (max-width: 768px) {
-  /* Side menu converted to a beautiful Bottom Sheet */
+  /* Side menu converted to a beautiful collapsed Icon Rail by default */
   #solia-menu-drawer {
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 70vh;
-    border-radius: var(--r-xl) var(--r-xl) 0 0;
-    transform: translateY(100%);
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
-    border-left: none;
-    border-right: none;
+    left: var(--sp-3);
+    width: 60px; /* Collapsed icon rail width */
+    transform: translateX(0); /* Always visible as rail */
   }
 
+  /* Hide textual elements and elements that don't fit the rail width */
+  #solia-menu-drawer:not(.open) .solia-menu-brand,
+  #solia-menu-drawer:not(.open) .solia-menu-close-btn,
+  #solia-menu-drawer:not(.open) .solia-menu-search-container,
+  #solia-menu-drawer:not(.open) .solia-group-title-text,
+  #solia-menu-drawer:not(.open) .solia-chevron-icon,
+  #solia-menu-drawer:not(.open) .solia-menu-group-items,
+  #solia-menu-drawer:not(.open) .solia-menu-footer {
+    display: none !important;
+  }
+
+  /* Custom header formatting for collapsed rail mode */
+  #solia-menu-drawer:not(.open) .solia-menu-header-wrapper {
+    padding: var(--sp-4) 0;
+    justify-content: center;
+    border-bottom: 1px solid rgba(184, 155, 106, 0.08);
+  }
+
+  /* Center the group icons inside collapsed rail */
+  #solia-menu-drawer:not(.open) .solia-menu-content {
+    padding: var(--sp-4) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-4);
+  }
+
+  #solia-menu-drawer:not(.open) .solia-menu-group {
+    border-bottom: none;
+  }
+
+  #solia-menu-drawer:not(.open) .solia-menu-group-header {
+    padding: var(--sp-2) 0;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-full);
+    transition: background var(--t-fast);
+  }
+
+  #solia-menu-drawer:not(.open) .solia-menu-group-header:hover {
+    background: rgba(184, 155, 106, 0.08);
+  }
+
+  /* Fully expanded mobile state when clicked */
   #solia-menu-drawer.open {
-    transform: translateY(0);
+    width: 280px; /* Expands to full menu drawer */
+    z-index: var(--z-menu);
+  }
+
+  #solia-menu-drawer.open .solia-menu-close-btn {
+    display: flex !important;
   }
 
   /* Floorplan converted to bottom sheet too */

@@ -66,8 +66,15 @@ class SoliaMenu {
     return SoliaConfig.menuGroups.map(group => `
       <div class="solia-menu-group collapsed" data-group-id="${group.id}" id="group-${group.id}">
         <div class="solia-menu-group-header solia-interactive" onclick="SoliaUI.menu.toggleGroup('${group.id}')">
-          <span>${group.title}</span>
-          <svg class="solia-chevron-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          <div class="solia-group-header-left">
+            <svg class="solia-group-icon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
+              ${this.getIconSvg(group.icon)}
+            </svg>
+            <span class="solia-group-title-text">${group.title}</span>
+          </div>
+          <svg class="solia-chevron-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </div>
         <div class="solia-menu-group-items">
           ${group.items.map(item => `
@@ -79,6 +86,33 @@ class SoliaMenu {
         </div>
       </div>
     `).join('');
+  }
+
+  getIconSvg(iconName) {
+    switch(iconName) {
+      case "explore":
+        return `<circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>`;
+      case "photo_camera":
+        return `<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle>`;
+      case "door_front":
+        return `<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line>`;
+      case "center_focus_strong":
+        return `<circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle>`;
+      case "apartment":
+        return `<rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="22" x2="9" y2="16"></line><line x1="15" y1="22" x2="15" y2="16"></line><line x1="9" y1="16" x2="15" y2="16"></line><path d="M8 6h2v2H8V6zm4 0h2v2h-2V6zm-4 4h2v2H8v-2zm4 0h2v2h-2v-2z"></path>`;
+      case "home":
+        return `<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>`;
+      case "navigation":
+        return `<polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>`;
+      case "pool":
+        return `<path d="M2 12h20M2 16h20M2 20h20M12 4v4M12 8l4-4M12 8L8 4"></path>`;
+      case "sports_soccer":
+        return `<circle cx="12" cy="12" r="10"></circle><path d="M6.2 6.2L12 12m0 0l5.8 5.8M12 12L6.2 17.8M12 12l5.8-5.8"></path>`;
+      case "forest":
+        return `<path d="M12 2L2 22h20L12 2z"></path>`;
+      default:
+        return `<circle cx="12" cy="12" r="10"></circle>`;
+    }
   }
 
   initEvents() {
@@ -141,6 +175,17 @@ class SoliaMenu {
 
   // Accordion Toggle Group
   toggleGroup(groupId) {
+    // Mobile Rail responsive handling:
+    // If screen size is mobile (< 768px) and the menu is closed (collapsed as rail),
+    // clicking any group icon should expand the menu first.
+    if (window.innerWidth <= 768 && !this.isOpen) {
+      this.toggle(true);
+      this.activeGroupId = groupId;
+      const currentEl = document.getElementById(`group-${groupId}`);
+      if (currentEl) currentEl.classList.remove("collapsed");
+      return;
+    }
+
     // If it is already open, collapse it
     if (this.activeGroupId === groupId) {
       const el = document.getElementById(`group-${groupId}`);
