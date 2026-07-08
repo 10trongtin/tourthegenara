@@ -1,7 +1,7 @@
 /**
  * theme.css
- * Solia Virtual Tour — Orange/Gold Luxury Design System
- * CSS Variables & Tokens (Updated to Premium Warm Gold & Dark Serif Theme)
+ * Solia Virtual Tour — Material Design 3 (M3) Dynamic Colors
+ * Seed Color: #cbb98a (Vàng đồng)
  */
 
 /* =====================================================
@@ -10,124 +10,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap');
 
 /* =====================================================
-   ROOT DESIGN TOKENS
+   M3 DYNAMIC COLOR SYSTEM
    ===================================================== */
 :root {
-  /* --- Color Palette: Warm Gold Luxury --- */
-  --c-primary:      #b89b6a; /* Gold accent */
-  --c-primary-rgb:  184, 155, 106;
-  --c-secondary:    #d9c5a0;
-  --c-accent:       #b89b6a;
-  --c-hover:        #d9c5a0;
-  --c-active:       #b89b6a;
-
-  /* --- Backgrounds --- */
-  --c-bg:           #1e1b17; /* Warm dark brown background */
-  --c-surface:      rgba(30, 27, 23, 0.98); /* Warm dark surface translucent */
-  --c-surface-dark: rgba(22, 20, 17, 0.98);
-  --c-overlay:      rgba(184, 155, 106, 0.04);
-
-  /* --- Text --- */
-  --c-text:         #F3EFE9; /* Warm off-white */
-  --c-text-muted:   #a8a294; /* Warm grey for inactive items */
-  --c-text-light:   #FFFFFF;
-  --c-text-inverse: #1e1b17;
-
-  /* --- Borders --- */
-  --c-border:       rgba(184, 155, 106, 0.15); /* Delicate gold-tinted border */
-  --c-border-light: rgba(255, 255, 255, 0.1);
-  --c-border-dark:  rgba(0, 0, 0, 0.2);
-
-  /* --- Gradients --- */
-  --g-primary:      linear-gradient(135deg, #b89b6a 0%, #d9c5a0 100%);
-  --g-warm:         linear-gradient(160deg, #302b25 0%, #1e1b17 100%);
-  --g-glass:        linear-gradient(135deg, rgba(30, 27, 23, 0.98) 0%, rgba(22, 20, 17, 0.94) 100%);
-  --g-dark-glass:   linear-gradient(135deg, rgba(22, 20, 17, 0.98) 0%, rgba(14, 13, 11, 0.96) 100%);
-  --g-orange-glow:  radial-gradient(ellipse at center, rgba(184, 155, 106, 0.15) 0%, transparent 70%);
-  --g-loading-bg:   linear-gradient(160deg, #161411 0%, #221f1a 50%, #161411 100%);
-
-  /* --- Typography --- */
-  --font-family:    'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
-  --font-family-serif: 'Playfair Display', 'Georgia', serif;
+  /* --- Brand Seed Color: #cbb98a --- */
+  --md-sys-color-primary:                  #cbb98a;
+  --md-sys-color-on-primary:               #26210f;
+  --md-sys-color-primary-container:        #443c22;
+  --md-sys-color-on-primary-container:      #e9dfca;
   
-  --fw-light:       300;
-  --fw-regular:     400;
-  --fw-medium:      500;
-  --fw-semibold:    600;
-  --fw-bold:        700;
+  --md-sys-color-surface:                  #1c1a17;
+  --md-sys-color-on-surface:               #f2ede4;
+  --md-sys-color-on-surface-variant:       #8a8478;
+  
+  --md-sys-color-surface-container:        #26231e;
+  --md-sys-color-surface-container-high:   #332f28;
+  --md-sys-color-surface-container-highest:#443f36;
+  
+  --md-sys-color-outline:                  rgba(203, 185, 138, 0.2);
+  --md-sys-color-outline-variant:          rgba(203, 185, 138, 0.1);
 
-  --fs-xs:   11px;
-  --fs-sm:   13px;
-  --fs-base: 14px;
-  --fs-md:   16px;
-  --fs-lg:   18px;
-  --fs-xl:   22px;
-  --fs-2xl:  28px;
-  --fs-3xl:  36px;
+  /* --- M3 Shape System --- */
+  --md-shape-corner-small:                 8px;   /* chips, small elements */
+  --md-shape-corner-medium:                16px;  /* cards, dialog popups */
+  --md-shape-corner-large:                 24px;  /* navigation drawer, bottom sheet */
+  --md-shape-corner-full:                  999px; /* pill buttons, FAB, search bar */
 
-  --lh-tight:  1.25;
-  --lh-normal: 1.5;
-  --lh-loose:  1.75;
-
-  /* --- Border Radius --- */
-  --r-xs:   4px;
-  --r-sm:   6px; /* Active item radius */
-  --r-md:   12px;
-  --r-lg:   16px;
-  --r-xl:   24px;
-  --r-2xl:  32px;
-  --r-full: 9999px;
-
-  /* --- Spacing Scale --- */
-  --sp-1:   4px;
-  --sp-2:   8px;
-  --sp-3:   12px;
-  --sp-4:   16px;
-  --sp-5:   20px;
-  --sp-6:   24px;
-  --sp-8:   32px;
-  --sp-10:  40px;
-  --sp-12:  48px;
-  --sp-16:  64px;
-
-  /* --- Shadows --- */
-  --shadow-sm:      0 1px 4px rgba(0, 0, 0, 0.2);
-  --shadow-md:      0 4px 16px rgba(0, 0, 0, 0.3);
-  --shadow-lg:      0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-xl:      0 16px 48px rgba(0, 0, 0, 0.5);
-  --shadow-glass:   0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(184, 155, 106, 0.05);
-  --shadow-orange:  0 4px 20px rgba(184, 155, 106, 0.2);
-  --shadow-orange-lg: 0 8px 32px rgba(184, 155, 106, 0.3);
-  --shadow-inset:   inset 0 1px 0 rgba(255, 255, 255, 0.05);
-
-  /* --- Glass Morphism --- */
-  --glass-bg:        rgba(30, 27, 23, 0.98);
-  --glass-border:    1px solid rgba(184, 155, 106, 0.15);
-  --glass-blur:      blur(20px) saturate(140%) brightness(0.95);
-  --glass-blur-dark: blur(24px) saturate(120%);
+  /* --- Typo --- */
+  --font-family:    'Be Vietnam Pro', sans-serif;
+  --font-family-serif: 'Playfair Display', Georgia, serif;
 
   /* --- Transitions --- */
-  --t-fast:    150ms ease-out;
-  --t-normal:  200ms ease; /* Update rotation chevron ease transition */
-  --t-slow:    500ms ease-out;
-  --t-spring:  350ms cubic-bezier(0.25, 1, 0.5, 1);
+  --t-duration: 200ms;
+  --t-easing:   cubic-bezier(0.2, 0, 0, 1);
+  --t-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* --- Z-index Layers --- */
+  /* --- Layers --- */
   --z-pano:      0;
-  --z-hotspot:   10;
   --z-overlay:   100;
-  --z-toolbar:   200;
-  --z-menu:      300;
-  --z-modal:     9999; /* Ensure modal popup is above everything else */
-  --z-loading:   500;
+  --z-drawer:    200;
+  --z-modal:     9999;
   --z-tooltip:   600;
-
-  /* --- Component Sizes --- */
-  --toolbar-height:       56px;
-  --toolbar-btn-size:     44px;
-  --menu-width:           300px;
-  --menu-width-mobile:    100%;
-  --minimap-size:         200px;
-  --touch-target:         44px;
-  --hotspot-pill-h:       34px;
 }
