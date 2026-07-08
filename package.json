@@ -1,0 +1,12 @@
+{
+  "name": "tourthegenara",
+  "version": "1.0.0",
+  "description": "Virtual Tour Genera by Solia",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy ."
+  },
+  "devDependencies": {
+    "wrangler": "^3.60.0"
+  }
+}

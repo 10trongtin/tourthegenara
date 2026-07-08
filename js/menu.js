@@ -229,7 +229,7 @@ class SoliaMenu {
 
     const listHTML = filteredItems.map(item => {
       const isActive = item.name === this.currentScene;
-      const thumb = `panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`;
+      const thumb = `/panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`;
       const desc = SoliaConfig.sceneDetails[item.name]?.description || "Không gian 360 độ.";
 
       return `

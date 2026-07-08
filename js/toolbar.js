@@ -133,7 +133,7 @@ class SoliaFloorplan {
         flatScenes.push({
           name: item.name,
           title: item.title,
-          thumb: `panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`
+          thumb: `/panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`
         });
       });
     });
