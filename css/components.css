@@ -208,21 +208,21 @@
 .solia-list-wrap {
   flex: 1;
   overflow-y: auto;
-  padding: var(--sp-2) var(--sp-4) var(--sp-4);
+  padding: 0;
 }
 
 .solia-m3-list {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2);
+  gap: 4px;
 }
 
 .solia-m3-list-item {
   display: flex;
   align-items: center;
-  gap: var(--sp-4);
-  padding: var(--sp-3);
-  border-radius: var(--r-md);
+  gap: var(--sp-3);
+  padding: 8px;
+  border-radius: var(--r-sm);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -241,8 +241,8 @@
 }
 
 .solia-m3-item-icon-container {
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--r-sm);
   overflow: hidden;
   flex-shrink: 0;
