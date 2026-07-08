@@ -1,4 +1,4 @@
-﻿<krpano version="1.20.11" title="Dự án Genera">
+<krpano version="1.20.11" title="Dự án Genera">
 
 			<!-- Tạo thanh menu -->
 	<!-- <include url="menu/plugins/menu_sm.xml" /> -->
@@ -16,15 +16,27 @@
 	<!-- Notify SoliaUI Overlay on Scene Change -->
 	<events name="solia_events" keep="true" onnewpano="js(SoliaUI_onSceneChange(get(xml.scene)))" />
 
-	<!-- Material Design Minimalist Luxury Hotspot Style -->
+	<!-- Modern Pulsing Icon Hotspot Style -->
 	<style name="material_hotspotstyle"
 	       type="text"
-	       css="font-family:'Be Vietnam Pro', Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; background:linear-gradient(135deg, #FF7A00 0%, #FF9E2C 100%); padding:8px 16px; border-radius:20px; box-shadow:0 4px 16px rgba(255,122,0,0.35); border: 1px solid rgba(255,255,255,0.25); text-align:center;"
+	       css="font-family:'Be Vietnam Pro', Arial, sans-serif;"
 	       bg="false"
-	       html="[tooltip]"
-	       onloaded="if(tooltip, copy(html, tooltip), set(html, 'Hotspot'));"
-	       onover="tween(scale, 1.08, 0.2); set(css, 'font-family:\'Be Vietnam Pro\', Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; background:linear-gradient(135deg, #FF8B1A 0%, #FFB347 100%); padding:8px 16px; border-radius:20px; box-shadow:0 6px 24px rgba(255,122,0,0.5); border: 1px solid rgba(255,255,255,0.4); text-align:center;');"
-	       onout="tween(scale, 1.0, 0.2); set(css, 'font-family:\'Be Vietnam Pro\', Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; background:linear-gradient(135deg, #FF7A00 0%, #FF9E2C 100%); padding:8px 16px; border-radius:20px; box-shadow:0 4px 16px rgba(255,122,0,0.35); border: 1px solid rgba(255,255,255,0.25); text-align:center;');"
+	       bgborder="0"
+	       txtshadow="0"
+	       html=""
+	       onloaded="
+             set(html, '
+                &lt;div class=&quot;solia-hotspot-container&quot;&gt;
+                   &lt;div class=&quot;solia-hotspot-pulse&quot;&gt;&lt;/div&gt;
+                   &lt;div class=&quot;solia-hotspot-core&quot;&gt;
+                      &lt;svg viewBox=&quot;0 0 24 24&quot; width=&quot;20&quot; height=&quot;20&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; fill=&quot;none&quot;&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;10&quot;&gt;&lt;/circle&gt;&lt;circle cx=&quot;12&quot; cy=&quot;12&quot; r=&quot;3&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;
+                   &lt;/div&gt;
+                   &lt;div class=&quot;solia-hotspot-label&quot;&gt;');
+             if(tooltip, txtadd(html, get(tooltip)), txtadd(html, 'Điểm đến'));
+             txtadd(html, '&lt;/div&gt;&lt;/div&gt;');
+           "
+	       onover="tween(scale, 1.1, 0.3, easeOutBack);"
+	       onout="tween(scale, 1.0, 0.3, easeOutBack);"
 	       onclick="if(linkedscene, loadscene(get(linkedscene), null, MERGE, BLEND(0.5)));"
 	       />
 

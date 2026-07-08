@@ -74,8 +74,8 @@
   /* --- Transitions --- */
   --t-duration: 200ms;
   --t-normal:   300ms;
+  --t-spring:   600ms cubic-bezier(0.175, 0.885, 0.32, 1.15);
   --t-easing:   cubic-bezier(0.2, 0, 0, 1);
-  --t-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* --- Layers --- */
   --z-pano:      0;

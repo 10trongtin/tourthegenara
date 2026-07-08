@@ -28,6 +28,18 @@ class SoliaMenu {
     `;
     uiContainer.insertAdjacentHTML('afterbegin', leftPanelHTML);
 
+    // Floating Button to Reopen Left Panel (only visible when collapsed)
+    const reopenBtnHTML = `
+      <button id="solia-menu-reopen-btn" class="solia-m3-fab solia-interactive" onclick="SoliaUI.menu.toggleLeftMenu(false)" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    `;
+    uiContainer.insertAdjacentHTML('afterbegin', reopenBtnHTML);
+
     // 2. Inject Bottom Sheet for Mobile — goes into main ui container (fixed to viewport bottom)
     const bottomSheetHTML = `
       <div id="solia-bottom-sheet" class="solia-interactive">
@@ -103,7 +115,15 @@ class SoliaMenu {
           <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
         <input type="text" class="solia-m3-search-input solia-interactive search-input-${platform}" placeholder="Tìm kiếm điểm đến..." ${platform === 'mobile' ? 'onclick="event.stopPropagation()"' : ''}>
-        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        
+        <!-- Action Icon (Search icon for mobile, Collapse icon for desktop) -->
+        ${platform === 'desktop' ? `
+          <button class="solia-m3-menu-btn solia-interactive" style="margin-left:auto;" onclick="event.stopPropagation(); SoliaUI.menu.toggleLeftMenu(true)" title="Thu gọn danh mục">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+        ` : `
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="margin-left:auto;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        `}
       </div>
 
       <!-- Current Location Label (ALWAYS VISIBLE) -->
@@ -316,6 +336,19 @@ class SoliaMenu {
       el.classList.add("open");
     } else {
       el.classList.remove("open");
+    }
+  }
+
+  toggleLeftMenu(forceState) {
+    const uiContainer = document.getElementById("solia-ui");
+    if (!uiContainer) return;
+
+    if (forceState === true) {
+      uiContainer.classList.add("menu-collapsed");
+    } else if (forceState === false) {
+      uiContainer.classList.remove("menu-collapsed");
+    } else {
+      uiContainer.classList.toggle("menu-collapsed");
     }
   }
 

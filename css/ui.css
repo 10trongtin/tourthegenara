@@ -21,6 +21,12 @@
   padding: var(--sp-6);
   gap: var(--sp-6);
   box-sizing: border-box;
+  transition: grid-template-columns var(--t-spring);
+}
+
+#solia-ui.menu-collapsed {
+  grid-template-columns: 0px 1fr;
+  gap: 0;
 }
 
 #solia-ui * {
@@ -77,7 +83,32 @@
   padding: var(--sp-5);
   gap: var(--sp-4);
   pointer-events: auto;
-  transition: transform var(--t-spring), opacity var(--t-duration);
+  transition: transform var(--t-spring), opacity var(--t-duration), padding var(--t-spring);
+}
+
+#solia-ui.menu-collapsed #solia-left-panel {
+  transform: translateX(-120%);
+  opacity: 0;
+  padding: 0;
+  pointer-events: none;
+}
+
+/* Floating button to reopen the menu */
+#solia-menu-reopen-btn {
+  position: absolute;
+  top: var(--sp-6);
+  left: var(--sp-6);
+  z-index: var(--z-toolbar);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transition: opacity var(--t-spring), transform var(--t-spring);
+}
+
+#solia-ui.menu-collapsed #solia-menu-reopen-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
 }
 
 /* Main virtual tour canvas styling offset if needed */

@@ -876,3 +876,85 @@
   }
 }
 
+/* =====================================================
+   PULSING HOTSPOT (Modern Icon Design for Krpano)
+   ===================================================== */
+.solia-hotspot-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.solia-hotspot-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  background-color: var(--md-sys-color-primary);
+  border-radius: 50%;
+  opacity: 0;
+  animation: solia-pulse 2s infinite cubic-bezier(0.4, 0.0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes solia-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.solia-hotspot-core {
+  width: 32px;
+  height: 32px;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-primary);
+  color: var(--md-sys-color-primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--md-sys-elevation-2);
+  position: relative;
+  z-index: 2;
+  transition: background-color var(--t-spring), color var(--t-spring), transform var(--t-spring);
+}
+
+.solia-hotspot-container:hover .solia-hotspot-core {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  transform: scale(1.1);
+}
+
+.solia-hotspot-label {
+  margin-top: 8px;
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--md-shape-corner-full);
+  box-shadow: var(--md-sys-elevation-2);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--t-spring), transform var(--t-spring);
+  pointer-events: none;
+  border: 1px solid var(--md-sys-color-outline);
+}
+
+.solia-hotspot-container:hover .solia-hotspot-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
