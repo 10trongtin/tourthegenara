@@ -11,6 +11,8 @@ class SoliaToolbar {
     this.isMuted = false;
     this.isAutorotate = false;
     
+    this.floorplan = new SoliaFloorplan(this.orch);
+    
     this.render();
   }
 
@@ -66,7 +68,7 @@ class SoliaToolbar {
   }
 
   toggleFloorplan() {
-    alert("Chức năng xem Sơ đồ mặt bằng đang được cập nhật.");
+    this.floorplan.toggle();
   }
 
   toggleAutorotate() {
@@ -136,6 +138,88 @@ class SoliaToolbar {
       `;
       btn.querySelector(".solia-tooltip").textContent = "Toàn màn hình";
     }
+  }
+}
+
+class SoliaFloorplan {
+  constructor(orchestrator) {
+    this.orch = orchestrator;
+    this.isOpen = false;
+    this.render();
+  }
+
+  render() {
+    const flatScenes = [];
+    const baseUrl = SoliaConfig.panoBaseUrl ? SoliaConfig.panoBaseUrl.replace(/\/$/, '') : '';
+    SoliaConfig.menuGroups.forEach(g => {
+      g.items.forEach(item => {
+        flatScenes.push({
+          name: item.name,
+          title: item.title,
+          thumb: `${baseUrl}/panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`
+        });
+      });
+    });
+
+    const floorplanHTML = `
+      <div id="solia-floorplan-drawer" class="solia-interactive">
+        <div class="solia-floorplan-header">
+          <h3 class="solia-floorplan-title">Sơ đồ mặt bằng</h3>
+          <button class="solia-menu-close-btn solia-interactive" onclick="SoliaUI.toolbar.floorplan.toggle(false)" aria-label="Close floorplan">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="solia-floorplan-body solia-scroll-y">
+          <div class="solia-floorplan-thumb-container">
+            ${flatScenes.map(sc => `
+              <div class="solia-floorplan-thumb solia-interactive" data-scene="${sc.name}" title="${sc.title}">
+                <img src="${sc.thumb}" alt="${sc.title}" onerror="this.src='skin/vtourskin.png'">
+                <div class="solia-floorplan-thumb-title">${sc.title}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+
+    this.orch.rightOverlay.insertAdjacentHTML('beforeend', floorplanHTML);
+    this.drawerEl = document.getElementById("solia-floorplan-drawer");
+
+    this.initEvents();
+  }
+
+  initEvents() {
+    this.drawerEl.querySelectorAll(".solia-floorplan-thumb").forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const sceneName = thumb.getAttribute("data-scene");
+        if (this.orch.krpano) {
+          this.orch.krpano.call(`skin_loadscene(${sceneName}, get(skin_settings.loadscene_blend))`);
+          if (window.innerWidth <= 768) {
+            this.toggle(false);
+          }
+        }
+      });
+    });
+  }
+
+  toggle(forceState) {
+    this.isOpen = forceState !== undefined ? forceState : !this.isOpen;
+    if (this.isOpen) {
+      this.drawerEl.classList.add("open");
+    } else {
+      this.drawerEl.classList.remove("open");
+    }
+  }
+
+  setActiveScene(sceneName) {
+    if (!this.drawerEl) return;
+    this.drawerEl.querySelectorAll(".solia-floorplan-thumb").forEach(thumb => {
+      if (thumb.getAttribute("data-scene") === sceneName) {
+        thumb.classList.add("active");
+      } else {
+        thumb.classList.remove("active");
+      }
+    });
   }
 }
 
