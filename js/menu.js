@@ -17,15 +17,18 @@ class SoliaMenu {
   }
 
   render() {
-    // 1. Inject Left Panel for Desktop
+    const uiContainer = this.orch.uiContainer;
+    const rightOverlay = this.orch.rightOverlay;
+
+    // 1. Inject Left Panel for Desktop — insert BEFORE the right-overlay so it lands in grid col 1
     const leftPanelHTML = `
       <div id="solia-left-panel" class="solia-interactive">
         ${this.getPanelMarkup("desktop")}
       </div>
     `;
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', leftPanelHTML);
+    uiContainer.insertAdjacentHTML('afterbegin', leftPanelHTML);
 
-    // 2. Inject Bottom Sheet for Mobile
+    // 2. Inject Bottom Sheet for Mobile — goes into main ui container (fixed to viewport bottom)
     const bottomSheetHTML = `
       <div id="solia-bottom-sheet" class="solia-interactive">
         <div class="solia-sheet-handle-container" onclick="SoliaUI.menu.toggleSheet()">
@@ -34,15 +37,15 @@ class SoliaMenu {
         ${this.getPanelMarkup("mobile")}
       </div>
     `;
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', bottomSheetHTML);
+    uiContainer.insertAdjacentHTML('beforeend', bottomSheetHTML);
 
-    // 3. Inject Modal Navigation Drawer (Side drawer on menu click)
+    // 3. Inject Modal Navigation Drawer — into uiContainer (full-screen overlay)
     const modalDrawerHTML = `
       <div id="solia-modal-drawer" class="solia-interactive" onclick="SoliaUI.menu.toggleDrawer(false)">
         <div class="solia-drawer-content" onclick="event.stopPropagation()">
           <div class="solia-drawer-header">
             <h2 class="solia-drawer-brand" style="font-family: var(--font-family-serif); color: var(--md-sys-color-primary);">${SoliaConfig.tourTitle}</h2>
-            <button class="solia-m3-menu-btn solia-interactive" onclick="SoliaUI.menu.toggleDrawer(false)">
+            <button class="solia-menu-close-btn solia-interactive" onclick="SoliaUI.menu.toggleDrawer(false)">
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
@@ -54,9 +57,9 @@ class SoliaMenu {
         </div>
       </div>
     `;
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', modalDrawerHTML);
+    uiContainer.insertAdjacentHTML('beforeend', modalDrawerHTML);
 
-    // 4. Inject FAB (Floating Action Button) in Bottom Right
+    // 4. Inject FAB into right-overlay (correct absolute parent)
     const fabHTML = `
       <div id="solia-fab-container">
         <button class="solia-m3-fab solia-interactive" onclick="SoliaUI.menu.openBookingDialog()">
@@ -70,24 +73,24 @@ class SoliaMenu {
         </button>
       </div>
     `;
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', fabHTML);
+    rightOverlay.insertAdjacentHTML('beforeend', fabHTML);
 
-    // 5. Inject Contact/Booking Modal Dialog
+    // 5. Inject Contact/Booking Modal Dialog — into uiContainer (full-screen overlay)
     const bookingModalHTML = `
-      <div id="solia-booking-modal" class="solia-info-modal solia-interactive" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:99999; background:rgba(0,0,0,0.6); backdrop-filter:blur(8px); align-items:center; justify-content:center;">
-        <div class="solia-info-card solia-interactive" style="padding:24px; gap:16px;">
+      <div id="solia-booking-modal" class="solia-interactive">
+        <div class="solia-info-card solia-interactive" style="padding:24px; gap:16px; display:flex; flex-direction:column;">
           <h2 class="solia-info-title" style="font-size:20px; font-family:var(--font-family-serif); color: var(--md-sys-color-on-surface);">Đặt lịch tham quan dự án</h2>
           <p style="font-size:13px; color:var(--md-sys-color-on-surface-variant);">Để lại thông tin, nhân viên tư vấn của Solia sẽ liên hệ với quý khách trong vòng 15 phút.</p>
-          <input type="text" placeholder="Họ và tên" style="width:100%; padding:12px; background:rgba(255,255,255,0.03); border:1px solid var(--md-sys-color-outline); border-radius:8px; color:#fff;" id="book-name">
-          <input type="tel" placeholder="Số điện thoại" style="width:100%; padding:12px; background:rgba(255,255,255,0.03); border:1px solid var(--md-sys-color-outline); border-radius:8px; color:#fff;" id="book-phone">
+          <input type="text" placeholder="Họ và tên" id="book-name">
+          <input type="tel" placeholder="Số điện thoại" id="book-phone">
           <div class="solia-info-actions" style="margin-top:8px;">
-            <button class="solia-btn-secondary" onclick="document.getElementById('solia-booking-modal').style.display='none'">Hủy</button>
-            <button class="solia-btn-primary" onclick="SoliaUI.menu.submitBooking()">Đăng ký ngay</button>
+            <button class="solia-btn-secondary solia-interactive" onclick="SoliaUI.menu.closeBookingDialog()">Hủy</button>
+            <button class="solia-btn-primary solia-interactive" onclick="SoliaUI.menu.submitBooking()">Đăng ký ngay</button>
           </div>
         </div>
       </div>
     `;
-    this.orch.uiContainer.insertAdjacentHTML('beforeend', bookingModalHTML);
+    uiContainer.insertAdjacentHTML('beforeend', bookingModalHTML);
 
     this.initEvents();
   }
@@ -317,7 +320,11 @@ class SoliaMenu {
   }
 
   openBookingDialog() {
-    document.getElementById("solia-booking-modal").style.display = "flex";
+    document.getElementById("solia-booking-modal").classList.add("open");
+  }
+
+  closeBookingDialog() {
+    document.getElementById("solia-booking-modal").classList.remove("open");
   }
 
   submitBooking() {
@@ -328,7 +335,7 @@ class SoliaMenu {
       return;
     }
     alert(`Cảm ơn ${name}! Yêu cầu tư vấn của bạn đã được tiếp nhận. Tư vấn viên của Solia sẽ gọi điện cho bạn sớm nhất.`);
-    document.getElementById("solia-booking-modal").style.display = "none";
+    this.closeBookingDialog();
     document.getElementById("book-name").value = "";
     document.getElementById("book-phone").value = "";
   }

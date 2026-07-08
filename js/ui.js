@@ -99,10 +99,15 @@ class SoliaUIOrchestrator {
     if (this.initialized) return;
     this.initialized = true;
 
-    // Inject base container overlay
-    const containerHTML = `<div id="solia-ui"></div>`;
+    // Inject base container overlay with both grid slots
+    const containerHTML = `
+      <div id="solia-ui">
+        <div id="solia-right-overlay" class="solia-interactive"></div>
+      </div>
+    `;
     document.body.insertAdjacentHTML('beforeend', containerHTML);
     this.uiContainer = document.getElementById("solia-ui");
+    this.rightOverlay = document.getElementById("solia-right-overlay");
 
     // Initialize all components
     this.menu = new SoliaMenu(this);

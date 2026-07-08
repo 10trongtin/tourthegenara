@@ -472,3 +472,410 @@
     display: none !important;
   }
 }
+
+/* =====================================================
+   LOADING SCREEN
+   ===================================================== */
+#solia-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  background-color: var(--md-sys-color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  transition: opacity 0.8s ease;
+}
+
+#solia-loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.solia-loader-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  text-align: center;
+}
+
+.solia-loader-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: var(--md-shape-corner-medium);
+}
+
+.solia-loader-title {
+  font-family: var(--font-family-serif);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--md-sys-color-primary);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.solia-loader-subtitle {
+  font-size: var(--fs-sm);
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.solia-loader-progress-box {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solia-loader-progress-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.solia-loader-progress-bg {
+  fill: none;
+  stroke: var(--md-sys-color-surface-container-high);
+  stroke-width: 4;
+}
+
+.solia-loader-progress-bar {
+  fill: none;
+  stroke: var(--md-sys-color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.solia-loader-progress-text {
+  font-family: var(--font-family);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--md-sys-color-on-surface);
+  position: relative;
+  z-index: 1;
+}
+
+.solia-loader-desc {
+  font-size: var(--fs-xs);
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   TOOLBAR (UTILITY DOCK)
+   ===================================================== */
+#solia-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background-color: var(--md-sys-color-surface-container);
+  padding: 6px var(--sp-3);
+  border-radius: var(--md-shape-corner-full);
+  border: 1px solid var(--md-sys-color-outline);
+  /* Positioning handled by parent #solia-right-overlay */
+  align-self: flex-start;
+  pointer-events: auto;
+}
+
+.solia-toolbar-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--md-shape-corner-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--t-duration) var(--t-easing),
+              color var(--t-duration) var(--t-easing);
+}
+
+.solia-toolbar-btn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
+}
+
+.solia-toolbar-btn.active {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-primary);
+}
+
+.solia-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--md-sys-color-outline-variant);
+  margin: 0 var(--sp-1);
+  flex-shrink: 0;
+}
+
+/* Tooltip on hover */
+.solia-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-family);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: var(--md-shape-corner-small);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--t-duration) var(--t-easing),
+              visibility var(--t-duration) var(--t-easing);
+  z-index: var(--z-tooltip);
+}
+
+.solia-toolbar-btn:hover .solia-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =====================================================
+   MINIMAP CONTAINER
+   ===================================================== */
+#solia-minimap-container {
+  position: absolute;
+  bottom: calc(var(--sp-6) + 56px + var(--sp-3)); /* Above FAB */
+  right: 0;
+  width: 320px;
+  height: 220px;
+  border-radius: var(--md-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  background-color: var(--md-sys-color-surface-container);
+}
+
+/* =====================================================
+   FLOORPLAN DRAWER
+   ===================================================== */
+#solia-floorplan-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-shape-corner-medium) 0 0 var(--md-shape-corner-medium);
+  border: 1px solid var(--md-sys-color-outline);
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: auto;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  /* Hidden by default - slide from right */
+  transform: translateX(110%);
+  transition: transform var(--t-spring);
+}
+
+#solia-floorplan-drawer.open {
+  transform: translateX(0);
+}
+
+.solia-floorplan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  flex-shrink: 0;
+}
+
+.solia-floorplan-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--sp-4);
+  scrollbar-width: thin;
+}
+
+.solia-floorplan-thumb-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-3);
+}
+
+.solia-floorplan-thumb {
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-shape-corner-small);
+  border: 2px solid transparent;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--t-duration) var(--t-easing),
+              transform var(--t-duration) var(--t-easing);
+}
+
+.solia-floorplan-thumb:hover {
+  border-color: var(--md-sys-color-primary);
+  transform: scale(1.02);
+}
+
+.solia-floorplan-thumb.active {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 2px var(--md-sys-color-primary);
+}
+
+.solia-floorplan-thumb img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+.solia-floorplan-thumb-title {
+  padding: 4px var(--sp-2) 6px;
+  font-size: var(--fs-xs);
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Close button in floorplan + drawer headers */
+.solia-menu-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--md-sys-color-on-surface-variant);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--md-shape-corner-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--t-duration) var(--t-easing);
+  flex-shrink: 0;
+}
+
+.solia-menu-close-btn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* =====================================================
+   RIPPLE EFFECT
+   ===================================================== */
+.solia-ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.solia-ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.18);
+  transform: scale(0);
+  animation: soliaRipple 0.5s linear forwards;
+  pointer-events: none;
+}
+
+/* =====================================================
+   BOOKING MODAL — FIX display flex
+   ===================================================== */
+#solia-booking-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-modal);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+#solia-booking-modal.open {
+  display: flex;
+}
+
+#solia-booking-modal input[type="text"],
+#solia-booking-modal input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-shape-corner-small);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-family);
+  font-size: var(--fs-sm);
+  outline: none;
+  transition: border-color var(--t-duration);
+  box-sizing: border-box;
+}
+
+#solia-booking-modal input:focus {
+  border-color: var(--md-sys-color-primary);
+}
+
+/* =====================================================
+   RIGHT OVERLAY WRAPPER — Must be position: relative
+   for absolute children (toolbar, minimap, floorplan)
+   ===================================================== */
+#solia-right-overlay {
+  position: relative;
+}
+
+/* Toolbar anchored to top-right of right overlay */
+#solia-right-overlay #solia-toolbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Minimap anchored above FAB */
+#solia-right-overlay #solia-minimap-container {
+  bottom: calc(56px + var(--sp-3));
+  right: 0;
+}
+
+/* FAB anchored bottom-right */
+#solia-right-overlay #solia-fab-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: auto;
+}
+
+/* =====================================================
+   RESPONSIVE OVERRIDES FOR RIGHT OVERLAY
+   ===================================================== */
+@media (max-width: 768px) {
+  #solia-right-overlay {
+    display: none;
+  }
+
+  /* Mobile FAB — show as fixed bottom right */
+  #solia-fab-container-mobile {
+    position: fixed;
+    bottom: 110px;
+    right: var(--sp-4);
+    z-index: var(--z-toolbar);
+    pointer-events: auto;
+  }
+}
+
