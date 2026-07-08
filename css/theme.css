@@ -29,6 +29,37 @@
   
   --md-sys-color-outline:                  rgba(203, 185, 138, 0.2);
   --md-sys-color-outline-variant:          rgba(203, 185, 138, 0.1);
+  --md-sys-color-secondary:                #ebd5a3; /* Thêm màu secondary còn thiếu */
+
+  /* --- Spacing System (Hệ khoảng cách - Sửa lỗi vỡ layout) --- */
+  --sp-1:                                  4px;
+  --sp-2:                                  8px;
+  --sp-3:                                  12px;
+  --sp-4:                                  16px;
+  --sp-5:                                  20px;
+  --sp-6:                                  24px;
+  --sp-8:                                  32px;
+
+  /* --- Typography Font Sizes (Hệ kích cỡ chữ) --- */
+  --fs-xs:                                 12px;
+  --fs-sm:                                 13px;
+  --fs-base:                               15px;
+  --fs-md:                                 17px;
+  --fs-lg:                                 19px;
+  --fs-xl:                                 22px;
+  --fs-2xl:                                28px;
+
+  /* --- Typography Font Weights (Hệ độ đậm chữ) --- */
+  --fw-regular:                            400;
+  --fw-medium:                             500;
+  --fw-semibold:                           600;
+  --fw-bold:                               700;
+
+  /* --- Line Heights (Hệ chiều cao dòng) --- */
+  --lh-none:                               1;
+  --lh-tight:                              1.25;
+  --lh-normal:                             1.5;
+  --lh-relaxed:                            1.75;
 
   /* --- M3 Shape System --- */
   --md-shape-corner-small:                 8px;   /* chips, small elements */
@@ -49,6 +80,7 @@
   --z-pano:      0;
   --z-overlay:   100;
   --z-drawer:    200;
+  --z-toolbar:   300; /* Thêm z-index cho toolbar còn thiếu */
   --z-modal:     9999;
   --z-tooltip:   600;
 }

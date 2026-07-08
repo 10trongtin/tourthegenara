@@ -11,7 +11,7 @@ const SoliaConfig = {
   websiteUrl: "https://genera.homegroup.com.vn/",
   
   // Cloudflare R2 CDN Base URL (Nếu để trống hoặc "/" sẽ load từ local, nếu có URL R2 thì sẽ load từ CDN R2)
-  panoBaseUrl: "", 
+  panoBaseUrl: "https://pub-3b03495ab1904bd393d542c261e8890b.r2.dev", 
 
   // Grouped Menu Structure
   menuGroups: [
