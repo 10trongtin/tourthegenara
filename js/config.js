@@ -1,11 +1,11 @@
 /**
  * config.js
- * Solia Virtual Tour — Orange Luxury Design System
+ * Solia Virtual Tour — Orange/Gold Luxury Design System
  * Dynamic Tour Configurations & Scene Database
  */
 
 const SoliaConfig = {
-  tourTitle: "Genera by The Solia",
+  tourTitle: "Genera",
   logoUrl: "menu/image/generalogo.png",
   googleMapUrl: "https://www.google.com/maps/d/u/0/embed?mid=1wO283wRXlQpxnFJKBGZQm4cyvEew0l4",
   websiteUrl: "https://genera.homegroup.com.vn/",
@@ -13,20 +13,14 @@ const SoliaConfig = {
   // Grouped Menu Structure
   menuGroups: [
     {
-      id: "lien_ket",
-      title: "Liên kết",
+      id: "tong_quan",
+      title: "TỔNG QUAN DỰ ÁN",
       items: [
         {
           name: "scene_Lipqn_ktglt_vpfng",
           title: "Liên kết vùng",
           icon: "explore"
-        }
-      ]
-    },
-    {
-      id: "tong_quan",
-      title: "Tổng quan dự án",
-      items: [
+        },
         {
           name: "scene_Tthvng_quan_1",
           title: "Tổng quan - View 1",
@@ -56,7 +50,7 @@ const SoliaConfig = {
     },
     {
       id: "phan_khu",
-      title: "Các phân khu",
+      title: "CÁC PHÂN KHU",
       items: [
         {
           name: "scene_View_trung_tpim_dthx_phn",
@@ -82,7 +76,7 @@ const SoliaConfig = {
     },
     {
       id: "nha_mau",
-      title: "Nhà mẫu",
+      title: "NHÀ MẪU",
       items: [
         {
           name: "scene_Nhpg_mtgru",
@@ -98,7 +92,7 @@ const SoliaConfig = {
     },
     {
       id: "tien_ich",
-      title: "Tiện ích",
+      title: "TIỆN ÍCH",
       items: [
         {
           name: "scene_Clubhouse_-_Htht_bshi",

@@ -1,11 +1,11 @@
 /**
  * components.css
- * Solia Virtual Tour — Orange Luxury Design System
- * All UI Component Styles
+ * Solia Virtual Tour — Orange/Gold Luxury Design System
+ * Updated with Premium Accordion, Serif Branding, and Visual Hierarchy
  */
 
 /* =====================================================
-   LOADING SCREEN (Full screen, orange luxury glass)
+   LOADING SCREEN (Full screen, gold luxury glass)
    ===================================================== */
 #solia-loading-screen {
   position: absolute;
@@ -35,32 +35,33 @@
 }
 
 .solia-loader-logo {
-  height: 90px;
+  height: 80px;
   width: auto;
-  filter: drop-shadow(0 0 20px rgba(255, 122, 0, 0.6));
+  filter: drop-shadow(0 0 20px rgba(184, 155, 106, 0.4));
   margin-bottom: var(--sp-4);
 }
 
 .solia-loader-title {
+  font-family: var(--font-family-serif);
   font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
-  letter-spacing: 1px;
+  font-weight: var(--fw-regular);
+  letter-spacing: 2px;
   color: #FFFFFF;
-  margin-bottom: var(--sp-2);
+  margin-bottom: var(--sp-1);
 }
 
 .solia-loader-subtitle {
-  font-size: var(--fs-sm);
-  color: var(--c-accent);
+  font-size: var(--fs-xs);
+  color: var(--c-primary);
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   font-weight: var(--fw-semibold);
 }
 
 .solia-loader-progress-box {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,11 +74,11 @@
 
 .solia-loader-progress-circle circle {
   fill: none;
-  stroke-width: 4;
+  stroke-width: 3;
 }
 
 .solia-loader-progress-bg {
-  stroke: rgba(255, 255, 255, 0.08);
+  stroke: rgba(255, 255, 255, 0.05);
 }
 
 .solia-loader-progress-bar {
@@ -89,16 +90,17 @@
 
 .solia-loader-progress-text {
   position: absolute;
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
   color: #FFFFFF;
 }
 
 .solia-loader-desc {
   margin-top: var(--sp-6);
   font-size: var(--fs-sm);
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: var(--fw-light);
+  letter-spacing: 0.5px;
 }
 
 
@@ -118,23 +120,53 @@
   overflow: hidden;
   transform: translateX(calc(-100% - var(--sp-6)));
   transition: transform var(--t-spring);
+  border: 1px solid rgba(184, 155, 106, 0.12);
+  background: var(--c-surface);
 }
 
 #solia-menu-drawer.open {
   transform: translateX(0);
 }
 
-.solia-menu-header {
-  padding: var(--sp-5);
-  border-bottom: 1px solid var(--c-border);
+.solia-menu-header-wrapper {
+  padding: var(--sp-6) var(--sp-6) var(--sp-4) var(--sp-6);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
-.solia-menu-logo-img {
-  height: 48px;
-  width: auto;
+/* Premium Brand Typography */
+.solia-menu-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  margin-top: var(--sp-2);
+  margin-bottom: var(--sp-3);
+}
+
+.solia-brand-collection {
+  font-size: 9px;
+  font-weight: var(--fw-semibold);
+  color: var(--c-primary);
+  letter-spacing: 4px;
+}
+
+.solia-brand-name {
+  font-family: var(--font-family-serif);
+  font-size: 28px;
+  font-weight: var(--fw-regular);
+  color: #FFFFFF;
+  margin: var(--sp-1) 0;
+  letter-spacing: 1px;
+}
+
+.solia-brand-by {
+  font-size: 9px;
+  font-weight: var(--fw-medium);
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 3px;
 }
 
 .solia-menu-close-btn {
@@ -142,22 +174,27 @@
   border: none;
   color: var(--c-text-muted);
   cursor: pointer;
-  width: var(--touch-target);
-  height: var(--touch-target);
+  width: 32px;
+  height: 32px;
   border-radius: var(--r-full);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background var(--t-fast), color var(--t-fast);
+  margin-left: -32px; /* Pull toggle close button aligned */
+  position: absolute;
+  right: var(--sp-4);
+  top: var(--sp-4);
 }
 
 .solia-menu-close-btn:hover {
-  background: rgba(255, 122, 0, 0.1);
+  background: rgba(184, 155, 106, 0.1);
   color: var(--c-primary);
 }
 
+/* Search input */
 .solia-menu-search-container {
-  padding: var(--sp-4) var(--sp-5) var(--sp-2) var(--sp-5);
+  padding: 0 var(--sp-6) var(--sp-5) var(--sp-6);
 }
 
 .solia-menu-search-wrapper {
@@ -165,98 +202,164 @@
   width: 100%;
 }
 
-.solia-menu-search-icon {
-  position: absolute;
-  left: var(--sp-3);
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--c-text-muted);
-  width: 18px;
-  height: 18px;
-}
-
 .solia-menu-search-input {
   width: 100%;
-  padding: 10px 10px 10px var(--sp-10);
+  padding: 12px var(--sp-4);
   font-family: var(--font-family);
   font-size: var(--fs-sm);
-  background: rgba(255, 122, 0, 0.04);
-  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(184, 155, 106, 0.15);
   border-radius: var(--r-md);
   color: var(--c-text);
   outline: none;
+  text-align: center;
   transition: border-color var(--t-fast), background var(--t-fast);
+}
+
+.solia-menu-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .solia-menu-search-input:focus {
   border-color: var(--c-primary);
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .solia-menu-content {
   flex: 1;
   overflow-y: auto;
-  padding: var(--sp-2) var(--sp-3) var(--sp-5) var(--sp-3);
+  padding: 0 var(--sp-6) var(--sp-4) var(--sp-6);
 }
 
+/* Accordion layout */
 .solia-menu-group {
-  margin-bottom: var(--sp-4);
+  margin-bottom: 2px;
+  border-bottom: 1px solid rgba(184, 155, 106, 0.05);
+}
+
+.solia-menu-group:last-child {
+  border-bottom: none;
 }
 
 .solia-menu-group-header {
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
   color: var(--c-primary);
-  text-transform: uppercase;
   letter-spacing: 1.5px;
-  padding: var(--sp-2) var(--sp-3);
+  padding: var(--sp-4) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
+  transition: color var(--t-fast);
 }
 
+.solia-menu-group-header:hover {
+  color: var(--c-hover);
+}
+
+.solia-chevron-icon {
+  color: var(--c-primary);
+  transition: transform var(--t-normal);
+}
+
+.solia-menu-group.collapsed .solia-chevron-icon {
+  transform: rotate(-90deg);
+}
+
+.solia-menu-group-items {
+  max-height: 1000px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height var(--t-normal) ease-in-out, opacity var(--t-normal) ease-in-out;
+  padding-bottom: var(--sp-3);
+}
+
+.solia-menu-group.collapsed .solia-menu-group-items {
+  max-height: 0 !important;
+  opacity: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+
+/* Inactive items: Muted warm grey */
 .solia-menu-item {
   width: 100%;
   display: flex;
   align-items: center;
-  padding: 12px var(--sp-4);
-  margin-bottom: 2px;
+  padding: 10px var(--sp-3);
+  margin-bottom: 4px;
   background: transparent;
   border: none;
-  border-radius: var(--r-md);
-  color: var(--c-text);
+  border-radius: var(--r-sm);
+  color: var(--c-text-muted); /* 45% white */
   font-family: var(--font-family);
   font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-regular);
   text-align: left;
   cursor: pointer;
   transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
 }
 
-.solia-menu-item svg {
+/* Custom bullet square */
+.solia-item-bullet {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 1px;
   margin-right: var(--sp-3);
-  color: var(--c-text-muted);
-  transition: color var(--t-fast);
+  display: inline-block;
+  flex-shrink: 0;
+  transition: border-color var(--t-fast), background var(--t-fast);
 }
 
 .solia-menu-item:hover {
-  background: rgba(255, 122, 0, 0.08);
-  color: var(--c-primary);
-  transform: translateX(4px);
+  color: #FFFFFF;
 }
 
-.solia-menu-item:hover svg {
-  color: var(--c-primary);
+.solia-menu-item:hover .solia-item-bullet {
+  border-color: #FFFFFF;
 }
 
+/* Active item: Highlight with light overlay and full color */
 .solia-menu-item.active {
-  background: var(--g-primary);
+  background: rgba(255, 255, 255, 0.04);
   color: #FFFFFF;
-  box-shadow: var(--shadow-orange);
+  font-weight: var(--fw-medium);
 }
 
-.solia-menu-item.active svg {
-  color: #FFFFFF;
+.solia-menu-item.active .solia-item-bullet {
+  border-color: var(--c-primary);
+  background: var(--c-primary);
+}
+
+/* Bottom footer menu utility icons */
+.solia-menu-footer {
+  padding: var(--sp-4) var(--sp-6);
+  border-top: 1px solid rgba(184, 155, 106, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-6);
+}
+
+.solia-menu-footer-btn {
+  background: transparent;
+  border: none;
+  color: var(--c-text-muted);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+
+.solia-menu-footer-btn:hover {
+  background: rgba(184, 155, 106, 0.08);
+  color: var(--c-primary);
 }
 
 
@@ -275,6 +378,8 @@
   display: flex;
   align-items: center;
   gap: var(--sp-2);
+  border: 1px solid rgba(184, 155, 106, 0.12);
+  background: var(--c-surface);
   transition: transform var(--t-spring), opacity var(--t-normal);
 }
 
@@ -294,26 +399,25 @@
 }
 
 .solia-toolbar-btn:hover {
-  background: rgba(255, 122, 0, 0.12);
+  background: rgba(184, 155, 106, 0.08);
   color: var(--c-primary);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .solia-toolbar-btn.active {
-  background: var(--g-primary);
-  color: #FFFFFF;
-  box-shadow: var(--shadow-orange);
+  background: rgba(184, 155, 106, 0.08);
+  color: var(--c-primary);
+  border: 1px solid rgba(184, 155, 106, 0.15);
 }
 
 .solia-toolbar-btn.active:hover {
-  color: #FFFFFF;
   transform: scale(1.05);
 }
 
 .solia-toolbar-divider {
   width: 1px;
-  height: 24px;
-  background: var(--c-border);
+  height: 20px;
+  background: rgba(184, 155, 106, 0.12);
 }
 
 
@@ -336,6 +440,7 @@
   visibility: hidden;
   pointer-events: none;
   box-shadow: var(--shadow-md);
+  border: 1px solid rgba(184, 155, 106, 0.1);
   transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
 }
 
@@ -356,7 +461,7 @@
   width: 100%;
   height: 100%;
   z-index: var(--z-modal);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
@@ -375,10 +480,12 @@
 
 .solia-info-card {
   width: 90%;
-  max-width: 480px;
+  max-width: 440px;
   border-radius: var(--r-xl);
   overflow: hidden;
-  transform: scale(0.9) translateY(20px);
+  border: 1px solid rgba(184, 155, 106, 0.15);
+  background: var(--c-surface);
+  transform: scale(0.95) translateY(10px);
   transition: transform var(--t-spring);
 }
 
@@ -388,7 +495,7 @@
 
 .solia-info-img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
 }
 
@@ -397,8 +504,9 @@
 }
 
 .solia-info-title {
+  font-family: var(--font-family-serif);
   font-size: var(--fs-lg);
-  color: var(--c-text);
+  color: #FFFFFF;
   margin-bottom: var(--sp-2);
 }
 
@@ -417,7 +525,7 @@
 
 .solia-btn-primary {
   background: var(--g-primary);
-  color: #FFFFFF;
+  color: var(--c-text-inverse);
   border: none;
   padding: 10px var(--sp-6);
   border-radius: var(--r-full);
@@ -425,19 +533,17 @@
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   cursor: pointer;
-  box-shadow: var(--shadow-orange);
   transition: transform var(--t-fast), box-shadow var(--t-fast);
 }
 
 .solia-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-orange-lg);
+  transform: translateY(-1px);
 }
 
 .solia-btn-secondary {
-  background: rgba(255, 122, 0, 0.08);
-  color: var(--c-primary);
-  border: 1px solid var(--c-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 10px var(--sp-6);
   border-radius: var(--r-full);
   font-family: var(--font-family);
@@ -448,8 +554,7 @@
 }
 
 .solia-btn-secondary:hover {
-  background: rgba(255, 122, 0, 0.15);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 
@@ -469,6 +574,8 @@
   overflow: hidden;
   transform: translateX(calc(100% + var(--sp-6)));
   transition: transform var(--t-spring);
+  border: 1px solid rgba(184, 155, 106, 0.12);
+  background: var(--c-surface);
 }
 
 #solia-floorplan-drawer.open {
@@ -477,7 +584,7 @@
 
 .solia-floorplan-header {
   padding: var(--sp-5);
-  border-bottom: 1px solid var(--c-border);
+  border-bottom: 1px solid rgba(184, 155, 106, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -525,7 +632,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
   color: #FFFFFF;
   font-size: 10px;
   font-weight: var(--fw-medium);
@@ -550,7 +657,7 @@
   overflow: hidden;
   z-index: var(--z-hotspot);
   box-shadow: var(--shadow-lg);
-  border: var(--glass-border);
+  border: 1px solid rgba(184, 155, 106, 0.15);
   transition: transform var(--t-spring), opacity var(--t-normal);
 }
 
@@ -575,7 +682,9 @@
     height: 70vh;
     border-radius: var(--r-xl) var(--r-xl) 0 0;
     transform: translateY(100%);
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+    border-left: none;
+    border-right: none;
   }
 
   #solia-menu-drawer.open {
