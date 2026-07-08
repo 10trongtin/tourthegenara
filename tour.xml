@@ -6,7 +6,7 @@
 	<include url="menu/plugins/photo_sm.xml" />
 
 		<!-- Tạo Hotspot -->
-	<include url="add_hotspot/plugins_l/add_hotspot.xml" /> 
+	<!-- <include url="add_hotspot/plugins_l/add_hotspot.xml" /> -->
 
 		<!-- Bước 1 Thêm điểm leo trên cao -->
 	<include url="plugins/hellowork/jr.xml"/>
@@ -40,27 +40,25 @@
 	       onclick="if(linkedscene, loadscene(get(linkedscene), null, MERGE, BLEND(0.5)));"
 	       />
 
-	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<!-- skin settings -->
 	<skin_settings maps="false"
 	               maps_type="google"
 	               maps_bing_api_key=""
 	               maps_google_api_key=""
 	               maps_zoombuttons="false"
-	               maps_loadonfirstuse="true"
+	               maps_cbcontrol="false"
 	               gyro="true"
-	               gyro_keeplookingdirection="false"
 	               webvr="true"
-	               webvr_keeplookingdirection="true"
-	               webvr_prev_next_hotspots="true"
+	               webvr_gyro_keeplookingdirection="false"
+	               webvr_prev_next_hotspots="false"
 	               autotour="false"
 	               littleplanetintro="false"
-	               followmousecontrol="false"
 	               title="false"
 	               thumbs="false"
 	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
 	               thumbs_opened="false"
 	               thumbs_text="false"
-	               thumbs_dragging="true"
+	               thumbs_dragging="false"
 	               thumbs_onhoverscrolling="false"
 	               thumbs_scrollbuttons="false"
 	               thumbs_scrollindicator="false"
@@ -74,13 +72,13 @@
 	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
 	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
 	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
-	               loadingtext=""
+	               loadingtext=" "
 	               layout_width="100%"
-	               layout_maxwidth="814"
+	               layout_maxwidth="815"
 	               controlbar_width="-24"
 	               controlbar_height="0"
-	               controlbar_offset="0"
-	               controlbar_offset_closed="0"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
 	               controlbar_overlap.no-fractionalscaling="10"
 	               controlbar_overlap.fractionalscaling="0"
 	               design_skin_images="vtourskin.png"
