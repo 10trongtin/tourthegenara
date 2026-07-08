@@ -1,0 +1,185 @@
+/**
+ * animation.css
+ * Solia Virtual Tour — Orange Luxury Design System
+ * CSS Animations and Keyframes
+ */
+
+@keyframes soliaPulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 122, 0, 0.6), 0 0 0 1px rgba(255, 122, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 122, 0, 0), 0 0 0 4px rgba(255, 122, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 122, 0, 0), 0 0 0 0 rgba(255, 122, 0, 0);
+  }
+}
+
+@keyframes soliaHotspotGlow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes soliaFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes soliaFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes soliaSlideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes soliaSlideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes soliaSlideInUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes soliaSlideInDown {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes soliaRipple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes soliaScaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes soliaSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes soliaShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Base utility classes for animations */
+.animate-pulse-glow {
+  animation: soliaPulseGlow 2s infinite ease-in-out;
+}
+
+.animate-hotspot-glow {
+  animation: soliaHotspotGlow 3s infinite ease-in-out;
+}
+
+.animate-fade-in {
+  animation: soliaFadeIn var(--t-normal) forwards ease-out;
+}
+
+.animate-fade-out {
+  animation: soliaFadeOut var(--t-normal) forwards ease-out;
+}
+
+.animate-slide-in-right {
+  animation: soliaSlideInRight var(--t-spring) forwards;
+}
+
+.animate-slide-in-left {
+  animation: soliaSlideInLeft var(--t-spring) forwards;
+}
+
+.animate-slide-in-up {
+  animation: soliaSlideInUp var(--t-spring) forwards;
+}
+
+.animate-slide-in-down {
+  animation: soliaSlideInDown var(--t-spring) forwards;
+}
+
+.animate-scale-up {
+  animation: soliaScaleUp var(--t-spring) forwards;
+}
+
+.animate-spin-slow {
+  animation: soliaSpin 12s infinite linear;
+}
+
+.animate-spin-fast {
+  animation: soliaSpin 1s infinite linear;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,122,0,0.1) 25%, rgba(255,122,0,0.2) 37%, rgba(255,122,0,0.1) 63%);
+  background-size: 400% 100%;
+  animation: soliaShimmer 1.4s ease infinite;
+}

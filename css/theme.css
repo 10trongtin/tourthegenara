@@ -1,0 +1,144 @@
+/**
+ * theme.css
+ * Solia Virtual Tour — Orange Luxury Design System
+ * CSS Variables & Tokens
+ */
+
+/* =====================================================
+   GOOGLE FONTS IMPORT
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
+
+/* =====================================================
+   ROOT DESIGN TOKENS
+   ===================================================== */
+:root {
+  /* --- Color Palette: Orange Luxury --- */
+  --c-primary:      #FF7A00;
+  --c-primary-rgb:  255, 122, 0;
+  --c-secondary:    #FF9E2C;
+  --c-accent:       #FFB347;
+  --c-hover:        #FF8B1A;
+  --c-active:       #E66D00;
+
+  /* --- Backgrounds --- */
+  --c-bg:           #FFF7F0;
+  --c-surface:      rgba(255, 255, 255, 0.88);
+  --c-surface-dark: rgba(20, 20, 20, 0.82);
+  --c-overlay:      rgba(255, 122, 0, 0.06);
+
+  /* --- Text --- */
+  --c-text:         #2A2A2A;
+  --c-text-muted:   #6B6B6B;
+  --c-text-light:   #FFFFFF;
+  --c-text-inverse: rgba(255, 255, 255, 0.9);
+
+  /* --- Borders --- */
+  --c-border:       rgba(255, 122, 0, 0.15);
+  --c-border-light: rgba(255, 255, 255, 0.2);
+  --c-border-dark:  rgba(0, 0, 0, 0.08);
+
+  /* --- Gradients --- */
+  --g-primary:      linear-gradient(135deg, #FF7A00 0%, #FF9E2C 100%);
+  --g-warm:         linear-gradient(160deg, #FFF7F0 0%, #FFE8CC 100%);
+  --g-glass:        linear-gradient(135deg, rgba(255,255,255,0.92) 0%, rgba(255,247,240,0.85) 100%);
+  --g-dark-glass:   linear-gradient(135deg, rgba(20,20,20,0.90) 0%, rgba(30,20,10,0.85) 100%);
+  --g-orange-glow:  radial-gradient(ellipse at center, rgba(255,122,0,0.25) 0%, transparent 70%);
+  --g-loading-bg:   linear-gradient(160deg, #1A0A00 0%, #2D1200 50%, #1A0A00 100%);
+
+  /* --- Typography --- */
+  --font-family:    'Be Vietnam Pro', 'Inter', system-ui, -apple-system, sans-serif;
+  --fw-light:       300;
+  --fw-regular:     400;
+  --fw-medium:      500;
+  --fw-semibold:    600;
+  --fw-bold:        700;
+
+  --fs-xs:   11px;
+  --fs-sm:   13px;
+  --fs-base: 14px;
+  --fs-md:   16px;
+  --fs-lg:   18px;
+  --fs-xl:   22px;
+  --fs-2xl:  28px;
+  --fs-3xl:  36px;
+
+  --lh-tight:  1.25;
+  --lh-normal: 1.5;
+  --lh-loose:  1.75;
+
+  /* --- Border Radius --- */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-full: 9999px;
+
+  /* --- Spacing Scale --- */
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   20px;
+  --sp-6:   24px;
+  --sp-8:   32px;
+  --sp-10:  40px;
+  --sp-12:  48px;
+  --sp-16:  64px;
+
+  /* --- Shadows --- */
+  --shadow-sm:      0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md:      0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-lg:      0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-xl:      0 16px 48px rgba(0, 0, 0, 0.16);
+  --shadow-glass:   0 8px 32px rgba(255, 122, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-orange:  0 4px 20px rgba(255, 122, 0, 0.30);
+  --shadow-orange-lg: 0 8px 32px rgba(255, 122, 0, 0.40);
+  --shadow-inset:   inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+  /* --- Glass Morphism --- */
+  --glass-bg:        rgba(255, 255, 255, 0.88);
+  --glass-border:    1px solid rgba(255, 122, 0, 0.12);
+  --glass-blur:      blur(20px) saturate(180%) brightness(1.02);
+  --glass-blur-dark: blur(24px) saturate(160%);
+
+  /* --- Transitions --- */
+  --t-fast:    150ms ease-out;
+  --t-normal:  300ms ease-out;
+  --t-slow:    500ms ease-out;
+  --t-spring:  400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Z-index Layers --- */
+  --z-pano:      0;
+  --z-hotspot:   10;
+  --z-overlay:   100;
+  --z-toolbar:   200;
+  --z-menu:      300;
+  --z-modal:     400;
+  --z-loading:   500;
+  --z-tooltip:   600;
+
+  /* --- Component Sizes --- */
+  --toolbar-height:       56px;
+  --toolbar-btn-size:     44px;
+  --menu-width:           288px;
+  --menu-width-mobile:    100%;
+  --minimap-size:         200px;
+  --touch-target:         44px;
+  --hotspot-pill-h:       34px;
+}
+
+/* =====================================================
+   DARK MODE OVERRIDES (system preference)
+   ===================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg:      #0F0800;
+    --c-surface: rgba(25, 15, 5, 0.90);
+    --c-text:    #F0E8DC;
+    --c-text-muted: #A89880;
+    --glass-bg:  rgba(25, 15, 5, 0.88);
+  }
+}

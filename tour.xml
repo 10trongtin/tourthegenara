@@ -1,7 +1,7 @@
 <krpano version="1.20.11" title="Dự án Genera">
 
 			<!-- Tạo thanh menu -->
-	<include url="menu/plugins/menu_sm.xml" />
+	<!-- <include url="menu/plugins/menu_sm.xml" /> -->
 	<!-- <include url="menu/plugins/edit_menu_sm.xml" /> -->
 	<include url="menu/plugins/photo_sm.xml" />
 
@@ -13,20 +13,23 @@
 
 	<include url="skin/vtourskin.xml" />
 
+	<!-- Notify SoliaUI Overlay on Scene Change -->
+	<events name="solia_events" keep="true" onnewpano="js(SoliaUI.onSceneChange(get(xml.scene)))" />
+
 	<!-- Material Design Minimalist Luxury Hotspot Style -->
 	<style name="material_hotspotstyle"
 	       type="text"
-	       css="font-family:'Roboto', Arial, sans-serif; font-size:14px; font-weight:500; color:#FFFFFF; background-color:#1B5E20; padding:8px 16px; border-radius:24px; box-shadow:0 4px 12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3); transition: transform 0.2s, background-color 0.2s;"
+	       css="font-family:'Be Vietnam Pro', Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; background:linear-gradient(135deg, #FF7A00 0%, #FF9E2C 100%); padding:8px 16px; border-radius:20px; box-shadow:0 4px 16px rgba(255,122,0,0.35); border: 1px solid rgba(255,255,255,0.25); text-align:center;"
 	       bg="false"
 	       html="[tooltip]"
 	       onloaded="if(tooltip, copy(html, tooltip), set(html, 'Hotspot'));"
-	       onover="tween(scale, 1.05, 0.2); set(css, 'font-family:Roboto, Arial, sans-serif; font-size:14px; font-weight:500; color:#FFFFFF; background-color:#0A1F16; padding:8px 16px; border-radius:24px; box-shadow:0 6px 16px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.5); transition: transform 0.2s, background-color 0.2s;');"
-	       onout="tween(scale, 1.0, 0.2); set(css, 'font-family:Roboto, Arial, sans-serif; font-size:14px; font-weight:500; color:#FFFFFF; background-color:#1B5E20; padding:8px 16px; border-radius:24px; box-shadow:0 4px 12px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.3); transition: transform 0.2s, background-color 0.2s;');"
+	       onover="tween(scale, 1.08, 0.2); set(css, 'font-family:\'Be Vietnam Pro\', Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; background:linear-gradient(135deg, #FF8B1A 0%, #FFB347 100%); padding:8px 16px; border-radius:20px; box-shadow:0 6px 24px rgba(255,122,0,0.5); border: 1px solid rgba(255,255,255,0.4); text-align:center;');"
+	       onout="tween(scale, 1.0, 0.2); set(css, 'font-family:\'Be Vietnam Pro\', Arial, sans-serif; font-size:13px; font-weight:600; color:#FFFFFF; background:linear-gradient(135deg, #FF7A00 0%, #FF9E2C 100%); padding:8px 16px; border-radius:20px; box-shadow:0 4px 16px rgba(255,122,0,0.35); border: 1px solid rgba(255,255,255,0.25); text-align:center;');"
 	       onclick="if(linkedscene, loadscene(get(linkedscene), null, MERGE, BLEND(0.5)));"
 	       />
 
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
-	<skin_settings maps="true"
+	<skin_settings maps="false"
 	               maps_type="google"
 	               maps_bing_api_key=""
 	               maps_google_api_key=""
@@ -40,8 +43,8 @@
 	               autotour="false"
 	               littleplanetintro="false"
 	               followmousecontrol="false"
-	               title="true"
-	               thumbs="true"
+	               title="false"
+	               thumbs="false"
 	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
 	               thumbs_opened="false"
 	               thumbs_text="false"
@@ -63,9 +66,9 @@
 	               layout_width="100%"
 	               layout_maxwidth="814"
 	               controlbar_width="-24"
-	               controlbar_height="40"
-	               controlbar_offset="5"
-	               controlbar_offset_closed="-40"
+	               controlbar_height="0"
+	               controlbar_offset="0"
+	               controlbar_offset_closed="0"
 	               controlbar_overlap.no-fractionalscaling="10"
 	               controlbar_overlap.fractionalscaling="0"
 	               design_skin_images="vtourskin.png"
