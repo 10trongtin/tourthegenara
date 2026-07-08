@@ -14,7 +14,7 @@
 	<include url="skin/vtourskin.xml" />
 
 	<!-- Notify SoliaUI Overlay on Scene Change -->
-	<events name="solia_events" keep="true" onnewpano="js(SoliaUI.onSceneChange(get(xml.scene)))" />
+	<events name="solia_events" keep="true" onnewpano="js(SoliaUI_onSceneChange(get(xml.scene)))" />
 
 	<!-- Material Design Minimalist Luxury Hotspot Style -->
 	<style name="material_hotspotstyle"

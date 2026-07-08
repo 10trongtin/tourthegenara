@@ -42,6 +42,15 @@
 			console.error('[Solia] Unhandled promise rejection:', e.reason);
 			forceRemoveLoader();
 		});
+
+		// Safe wrapper for krpano XML callbacks to prevent crash if called early
+		window.SoliaUI_onSceneChange = function(sceneName) {
+			if (window.SoliaUI && typeof window.SoliaUI.onSceneChange === 'function') {
+				window.SoliaUI.onSceneChange(sceneName);
+			} else {
+				console.warn('[Solia] SoliaUI.onSceneChange called but SoliaUI is not ready yet.');
+			}
+		};
 	</script>
 
 	<style>

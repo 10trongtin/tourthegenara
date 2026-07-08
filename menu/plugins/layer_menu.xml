@@ -1,11 +1,11 @@
-﻿<krpano>
+<krpano>
 	
 	<!-- //////////////////////    СТИЛИ    /////////////////////////////// --> 
 	<!-- Контейнер группы -->
     <style  name="cont_gr" type="container" keep="true" align="top" width="100%" height="0" y="0" maskchildren="true"  add_y="0"  menu="true"
  			bgcolor="0x000000"  bgalpha="0.0"  bgcapture="true"  bgborder="0,0,0,0 0xFFFFFF 0"  bgshadow="0 0 0 0 0x000000 0.0"   bgroundedge="0 0 0 0" />
 	 <!-- Слой прокрутки -->	   
-    <style 	name="scroll_m"  url.flash="%CURRENTXML%/plugins/scrollarea.swf"  url.html5="%CURRENTXML%/plugins/scrollarea.js" keep="true" align="lefttop" y="0" x="0"
+    <style 	name="scroll_m"  url.flash="%FIRSTXML%/plugins/scrollarea.swf"  url.html5="%FIRSTXML%/plugins/scrollarea.js" keep="true" align="lefttop" y="0" x="0"
 		    width="100%" height="500" direction="v" draggable="true" mwheel="true" 
 			onhover_autoscrolling="false" overscroll="0" friction="0.8" onscroll="updatebegun_men();"   />
 			
@@ -23,7 +23,7 @@
 				keep="true"   /> -->
 
 	<!-- Плагин звука  если плагин дублированно подключен, то тур не работает - черный экран!!! -->
-	<plugin name="soundinterface"  url.html5="%CURRENTXML%/plugins/soundinterface.js" url.flash="%CURRENTXML%/plugins/soundinterface.swf"
+	<plugin name="soundinterface"  url.html5="%FIRSTXML%/plugins/soundinterface.js" url.flash="%CURRENTXML%/plugins/soundinterface.swf"
 				preload="true" rootpath="" volume="1.0" mute="false" panningmodel="simple" worldscale="1.0" autopause="true" autounlock="true"  />	
 		
 	
