@@ -1,2 +1,2 @@
+# Redirect root to virtual tour page
 / /tour.html 200
-/index.html /tour.html 200

@@ -1,30 +1,54 @@
-/*
-  Access-Control-Allow-Origin: *
-  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+# ============================================================
+# _headers — Cloudflare Pages HTTP Response Headers
+# ============================================================
+
+# --- HTML pages ---
+/*.html
+  Content-Type: text/html; charset=utf-8
+  Cache-Control: no-cache, must-revalidate
   X-Content-Type-Options: nosniff
-  Cache-Control: public, max-age=86400
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: gyroscope=(), accelerometer=()
+
+# --- Root (redirect target) ---
+/
+  Cache-Control: no-cache, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# --- XML config (krpano tour config — no cache so edits take effect immediately) ---
+/tour.xml
+  Content-Type: text/xml; charset=utf-8
+  Cache-Control: no-cache, must-revalidate
+  Access-Control-Allow-Origin: *
 
 /*.xml
   Content-Type: text/xml; charset=utf-8
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=3600
 
-/tour.xml
-  Content-Type: text/xml; charset=utf-8
-  Cache-Control: no-cache, must-revalidate
-
+# --- JavaScript ---
 /*.js
-  Content-Type: application/javascript
+  Content-Type: application/javascript; charset=utf-8
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
 
+# --- CSS ---
 /*.css
+  Content-Type: text/css; charset=utf-8
   Cache-Control: public, max-age=86400
 
-/panos/*.jpg
+# --- Images (skin/icons within Pages — NOT panos which are on R2) ---
+/*.jpg
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=2592000, immutable
 
-/panos/*
+/*.png
   Access-Control-Allow-Origin: *
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=2592000, immutable
+
+# --- Default catch-all ---
+/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  X-Content-Type-Options: nosniff

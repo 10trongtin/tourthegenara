@@ -9,6 +9,9 @@ const SoliaConfig = {
   logoUrl: "/menu/image/generalogo.png",
   googleMapUrl: "https://www.google.com/maps/d/u/0/embed?mid=1wO283wRXlQpxnFJKBGZQm4cyvEew0l4",
   websiteUrl: "https://genera.homegroup.com.vn/",
+  
+  // Cloudflare R2 CDN Base URL (Nếu để trống hoặc "/" sẽ load từ local, nếu có URL R2 thì sẽ load từ CDN R2)
+  panoBaseUrl: "", 
 
   // Grouped Menu Structure
   menuGroups: [

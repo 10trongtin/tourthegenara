@@ -167,7 +167,13 @@ class SoliaUIOrchestrator {
 
     titleEl.textContent = data.title;
     descEl.textContent = data.description;
-    imgEl.src = data.image;
+    
+    let imageSrc = data.image;
+    if (imageSrc && imageSrc.startsWith('/panos/') && SoliaConfig.panoBaseUrl) {
+      const baseUrl = SoliaConfig.panoBaseUrl.replace(/\/$/, '');
+      imageSrc = `${baseUrl}${imageSrc}`;
+    }
+    imgEl.src = imageSrc;
 
     ctaEl.onclick = () => {
       this.closeInfoModal();

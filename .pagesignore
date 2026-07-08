@@ -1,3 +1,29 @@
+# ============================================================
+# .pagesignore — Cloudflare Pages Deploy Exclusions
+# Cloudflare Pages limit: 25 MB total, 20,000 files max
+# ============================================================
+
+# --- Heavy panorama tiles (299 MB) — hosted on Cloudflare R2 ---
 panos/
+
+# --- Backup & temp files ---
+*.xml - backup*
+*backup*.xml
+* - backup*
+
+# --- Dev/build tools ---
 tour_testingserver_macos
+node_modules/
+.wrangler/
 .cursor/
+.vscode/
+.git/
+
+# --- Deployment scripts (not needed in production) ---
+deploy.bat
+dev.bat
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+desktop.ini

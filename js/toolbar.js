@@ -128,12 +128,13 @@ class SoliaFloorplan {
 
   render() {
     const flatScenes = [];
+    const baseUrl = SoliaConfig.panoBaseUrl ? SoliaConfig.panoBaseUrl.replace(/\/$/, '') : '';
     SoliaConfig.menuGroups.forEach(g => {
       g.items.forEach(item => {
         flatScenes.push({
           name: item.name,
           title: item.title,
-          thumb: `/panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`
+          thumb: `${baseUrl}/panos/${item.name.replace('scene_', '')}.tiles/thumb.jpg`
         });
       });
     });
