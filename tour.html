@@ -25,9 +25,7 @@
 
 	<!-- Global error boundary: catch any uncaught JS error to prevent loading screen freeze -->
 	<script>
-		window.addEventListener('error', function(e) {
-			console.error('[Solia] Uncaught error:', e.message, 'at', e.filename + ':' + e.lineno);
-			// If loading screen is still showing after a JS crash, remove it after a grace period
+		function forceRemoveLoader() {
 			setTimeout(function() {
 				var loader = document.getElementById('solia-loading-screen');
 				if (loader) {
@@ -35,6 +33,14 @@
 					loader.remove();
 				}
 			}, 3000);
+		}
+		window.addEventListener('error', function(e) {
+			console.error('[Solia] Uncaught error:', e.message, 'at', e.filename + ':' + e.lineno);
+			forceRemoveLoader();
+		});
+		window.addEventListener('unhandledrejection', function(e) {
+			console.error('[Solia] Unhandled promise rejection:', e.reason);
+			forceRemoveLoader();
 		});
 	</script>
 

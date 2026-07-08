@@ -104,7 +104,7 @@
 		<preview url="panos/Lipqn_ktglt_vpfng.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Lipqn_ktglt_vpfng.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Lipqn_ktglt_vpfng.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="genera" style="material_hotspotstyle" anchor="center" lineheight="35" ath="0.003" atv="42.559" linkedscene="scene_Tthvng_quan_1" tooltip="Dự án Genera" />
@@ -124,7 +124,7 @@
 		<preview url="panos/Tthvng_quan_1.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Tthvng_quan_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Tthvng_quan_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="genera" style="material_hotspotstyle" anchor="center" lineheight="35" ath="-0.602" atv="18.962" linkedscene="scene_Tthvng_quan_1" tooltip="Dự án Genera" />
@@ -140,7 +140,7 @@
 		<preview url="panos/Tthvng_quan_2.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Tthvng_quan_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Tthvng_quan_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="genera" style="material_hotspotstyle" anchor="center" lineheight="35" ath="0.005" atv="20.148" linkedscene="scene_Tthvng_quan_1" tooltip="Dự án Genera" />
@@ -156,7 +156,7 @@
 		<preview url="panos/Tthvng_quan_3.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Tthvng_quan_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Tthvng_quan_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="genera" style="material_hotspotstyle" anchor="center" lineheight="35" ath="0.327" atv="24.676" linkedscene="scene_Tthvng_quan_1" tooltip="Dự án Genera" />
@@ -172,7 +172,7 @@
 		<preview url="panos/Tthvng_quan_4.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Tthvng_quan_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Tthvng_quan_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="genera" style="material_hotspotstyle" anchor="center" lineheight="35" ath="0.550" atv="21.980" linkedscene="scene_Tthvng_quan_1" tooltip="Dự án Genera" />
@@ -188,7 +188,7 @@
 		<preview url="panos/Cthvng_vpgo_dthx_phn.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Cthvng_vpgo_dthx_phn.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Cthvng_vpgo_dthx_phn.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	</scene>
@@ -202,7 +202,7 @@
 		<preview url="panos/View_trung_tpim_dthx_phn.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/View_trung_tpim_dthx_phn.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/View_trung_tpim_dthx_phn.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="trungtam" style="material_hotspotstyle" anchor="center" lineheight="35" ath="102.994" atv="87.544" linkedscene="" tooltip="Ngã tư trung tâm" />
@@ -221,7 +221,7 @@
 		<preview url="panos/Phpin_khu_1_-_Athena.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Phpin_khu_1_-_Athena.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Phpin_khu_1_-_Athena.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="athena" style="material_hotspotstyle" anchor="center" lineheight="35" ath="125.321" atv="87.706" linkedscene="scene_Phpin_khu_1_-_Athena" tooltip="Phân khu 1 - Athena" />
@@ -240,7 +240,7 @@
 		<preview url="panos/Phpin_khu_2_-_Apollo.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Phpin_khu_2_-_Apollo.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Phpin_khu_2_-_Apollo.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="apollo" style="material_hotspotstyle" anchor="center" lineheight="35" ath="34.323" atv="87.704" linkedscene="scene_Phpin_khu_2_-_Apollo" tooltip="Phân khu 2 - Apollo" />
@@ -259,7 +259,7 @@
 		<preview url="panos/Phpin_khu_3_-_Flora.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Phpin_khu_3_-_Flora.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Phpin_khu_3_-_Flora.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="flora" style="material_hotspotstyle" anchor="center" lineheight="35" ath="26.406" atv="87.704" linkedscene="scene_Phpin_khu_3_-_Flora" tooltip="Phân khu 3 - Flora" />
@@ -276,7 +276,7 @@
 		<preview url="panos/Nhpg_mtgru.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Nhpg_mtgru.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Nhpg_mtgru.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="nhamau" style="material_hotspotstyle" anchor="center" lineheight="35" ath="0.103" atv="-10.627" linkedscene="scene_Nhpg_mtgru" tooltip="Nhà mẫu" />
@@ -292,7 +292,7 @@
 		<preview url="panos/Trthlc_chptnh_nhpg_mtgru.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Trthlc_chptnh_nhpg_mtgru.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Trthlc_chptnh_nhpg_mtgru.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	<hotspot name="nhamau" style="material_hotspotstyle" anchor="center" lineheight="35" ath="23.702" atv="5.442" linkedscene="scene_Nhpg_mtgru" tooltip="Nhà mẫu" />
@@ -308,7 +308,7 @@
 		<preview url="panos/Clubhouse_-_Htht_bshi.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Clubhouse_-_Htht_bshi.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Clubhouse_-_Htht_bshi.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	</scene>
@@ -322,7 +322,7 @@
 		<preview url="panos/Spin_ththd_thao_-_Spin_chshi_trtgh_em.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Spin_ththd_thao_-_Spin_chshi_trtgh_em.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Spin_ththd_thao_-_Spin_chshi_trtgh_em.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	</scene>
@@ -336,7 +336,7 @@
 		<preview url="panos/Cpang_vipqn_-_qqpgi_phun_nswthbc.tiles/preview.jpg" />
 
 		<image>
-			<cube url="panos/Cpang_vipqn_-_qqpgi_phun_nswthbc.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+			<cube url="panos/Cpang_vipqn_-_qqpgi_phun_nswthbc.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
 	</scene>
