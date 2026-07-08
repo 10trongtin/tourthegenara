@@ -23,6 +23,21 @@
 	<script src="/js/transition.js"></script>
 	<script src="/js/ui.js"></script>
 
+	<!-- Global error boundary: catch any uncaught JS error to prevent loading screen freeze -->
+	<script>
+		window.addEventListener('error', function(e) {
+			console.error('[Solia] Uncaught error:', e.message, 'at', e.filename + ':' + e.lineno);
+			// If loading screen is still showing after a JS crash, remove it after a grace period
+			setTimeout(function() {
+				var loader = document.getElementById('solia-loading-screen');
+				if (loader) {
+					console.warn('[Solia] Forcing loading screen removal due to JS error.');
+					loader.remove();
+				}
+			}, 3000);
+		});
+	</script>
+
 	<style>
 		html { height: 100%; }
 		body { 
@@ -67,8 +82,18 @@
 				mobilescale: 1.0, 
 				passQueryParameters: "startscene,startlookat",
 				onready: function(krpano_instance) {
-					// Connect krpano engine to the UI Orchestrator
-					window.SoliaUI.setKrpano(krpano_instance);
+					// Guard clause: verify SoliaUI is initialized before calling setKrpano.
+					// Protects against race conditions or script load failures.
+					if (window.SoliaUI && typeof window.SoliaUI.setKrpano === 'function') {
+						window.SoliaUI.setKrpano(krpano_instance);
+					} else {
+						console.warn('[Solia] SoliaUI chưa sẵn sàng khi krpano onready fire. SoliaUI =', window.SoliaUI);
+						// Fallback: hide loading screen so tour is not frozen for the user
+						setTimeout(function() {
+							var loader = document.getElementById('solia-loading-screen');
+							if (loader) loader.remove();
+						}, 500);
+					}
 				}
 			});
 		</script>

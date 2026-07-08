@@ -110,6 +110,11 @@ class SoliaUIOrchestrator {
     this.initInfoModal();
     this.initRippleEffect();
 
+    // Initialize hotspot manager now that SoliaUI is ready
+    if (window.SoliaHotspotManager) {
+      window.SoliaHotspots = new window.SoliaHotspotManager(this);
+    }
+
     // Trigger initial highlights
     const initialScene = this.krpano.get("xml.scene");
     if (initialScene) {

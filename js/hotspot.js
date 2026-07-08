@@ -19,4 +19,7 @@ class SoliaHotspotManager {
   }
 }
 
-window.SoliaHotspots = new SoliaHotspotManager(window.SoliaUI);
+// NOTE: SoliaUI is not yet available at this point (ui.js loads after hotspot.js).
+// SoliaHotspotManager is instantiated lazily when SoliaUI calls it, or via window.SoliaHotspots.
+// Do not auto-instantiate here to avoid passing undefined as orchestrator.
+window.SoliaHotspotManager = SoliaHotspotManager;
